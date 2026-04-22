@@ -19,8 +19,18 @@ test ('open odoo staging', async({page}) => {
     await page.click('input[type="submit"][value="Sign in"]');
     await expect(page.getByRole('link', {name: 'ponty-erp'})).toBeVisible()
 
-    //Open odoo-staging application
+    //Open odoo sh
     await page.getByRole('link',{name: 'Open'}).click()
     await expect(page).toHaveURL('https://www.odoo.sh/project/ponty-erp')
+
+    // Open staging application
+    await page.locator('span.o_paas_branch a[href="/project/ponty-erp/branches/staging"]').click();
+    await page.getByRole('link', { name: 'CONNECT' }).click();
+    await expect(
+    page.locator('span:has-text("This is a test database.")')
+    ).toBeVisible();
+    await page.waitForTimeout(3000); // 3 seconds
+    // await.expect(page)
+
 
 })
