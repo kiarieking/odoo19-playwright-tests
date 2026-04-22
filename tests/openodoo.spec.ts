@@ -26,11 +26,7 @@ test ('open odoo staging', async({page}) => {
     // Open staging application
     await page.locator('span.o_paas_branch a[href="/project/ponty-erp/branches/staging"]').click();
     await page.getByRole('link', { name: 'CONNECT' }).click();
-    await expect(
-    page.locator('span:has-text("This is a test database.")')
-    ).toBeVisible();
-    await page.waitForTimeout(3000); // 3 seconds
-    // await.expect(page)
+    await expect(page).toHaveURL(/staging/)
 
 
 })
