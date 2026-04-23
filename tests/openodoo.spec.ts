@@ -1,14 +1,14 @@
 import { test, expect } from "@playwright/test"
+import { OdooShPage } from "../page_objects/OdooShPage"
 
-// test ('has title', async({page}) => {
-//     await page.goto('https://www.odoo.sh/')
+let odoosh: OdooShPage
 
-//     // Expect odoo.sh page title
-//     await expect(page).toHaveTitle("The Odoo Cloud Platform | Official Odoo Hosting")
-// })
+
+
 
 test ('open odoo staging', async({page}) => {
-    await page.goto('https://www.odoo.sh/')
+    odoosh = new OdooShPage(page)
+    await odoosh.visit()
 
     // Click my projects drop down
     await page.getByRole('link', {name: 'Sign in'}).click()
@@ -32,7 +32,7 @@ test ('open odoo staging', async({page}) => {
     await page1.goto('https://ponty-erp-staging-31243847.dev.odoo.com/odoo/action-624');
 
     await page1.getByText('January 2023 (3003)').click();
-    await page1.getByText('Cancelled (30)').click();
+    await page1.getByText(/Cancelled/).click();
     await page1.getByRole('cell', { name: 'PPD/PPD/KAQ216M' }).click();
     await page1.getByRole('heading').locator('div').filter({ hasText: /^PDO05311$/ }).click();
     await page1.getByRole('button', { name: 'Reset to draft' }).click();
