@@ -31,8 +31,14 @@ test ('open odoo staging', async({page}) => {
     await page1.getByRole('option', { name: 'Dispatch' }).click();
     await page1.goto('https://ponty-erp-staging-31243847.dev.odoo.com/odoo/action-624');
 
-    // Open dispatch order LPOs
-    // await page.getByRole('button', {name: 'Finance'}).click()
-    // await page.waitForTimeout(5000)
+    await page1.getByText('January 2023 (3003)').click();
+    await page1.getByText('Cancelled (30)').click();
+    await page1.getByRole('cell', { name: 'PPD/PPD/KAQ216M' }).click();
+    await page1.getByRole('heading').locator('div').filter({ hasText: /^PDO05311$/ }).click();
+    await page1.getByRole('button', { name: 'Reset to draft' }).click();
+    await page1.goto('https://ponty-erp-staging-31243847.dev.odoo.com/odoo/action-624/5154');
+
+   
+
 
 })
