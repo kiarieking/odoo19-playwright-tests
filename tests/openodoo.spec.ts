@@ -25,8 +25,14 @@ test ('open odoo staging', async({page}) => {
 
     // Open staging application
     await page.locator('span.o_paas_branch a[href="/project/ponty-erp/branches/staging"]').click();
+    const page1Promise = page.waitForEvent('popup');
     await page.getByRole('link', { name: 'CONNECT' }).click();
-    await expect(page).toHaveURL(/staging/)
+    const page1 = await page1Promise;
+    await page1.getByRole('option', { name: 'Dispatch' }).click();
+    await page1.goto('https://ponty-erp-staging-31243847.dev.odoo.com/odoo/action-624');
 
+    // Open dispatch order LPOs
+    // await page.getByRole('button', {name: 'Finance'}).click()
+    // await page.waitForTimeout(5000)
 
 })
