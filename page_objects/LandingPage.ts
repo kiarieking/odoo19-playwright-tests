@@ -12,8 +12,8 @@ export class LandinPage extends Basepage{
     const page1Promise = this.page.waitForEvent('popup');
     await this.page.getByRole('link', { name: 'CONNECT' }).click();
     
-    const page1 = await this.page.waitForEvent('popup');
-    await page1.getByRole('option', { name: 'Dispatch' }).click();
-    await page1.goto('https://ponty-erp-staging-31243847.dev.odoo.com/odoo/action-624');
+    // const page1 = await this.page.waitForEvent('popup');
+    // await page1.getByRole('option', { name: 'Dispatch' }).click();
+    // await page1.goto('https://ponty-erp-staging-31243847.dev.odoo.com/odoo/action-624');
     }
 }
