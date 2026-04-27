@@ -20,6 +20,10 @@ export class DispatchPage extends Basepage{
         const januaryGroup = this.page.locator('tr:has-text("January 2023")');
         await expect(januaryGroup).toBeVisible({timeout: 15000});
         await januaryGroup.click();
+        await this.page.locator('text=Cancelled').click()
+        await this.page.locator('tr.o_data_row').first().click()
+        await this.page.waitForTimeout(15000);
+
     }
 
 }
