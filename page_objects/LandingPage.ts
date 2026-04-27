@@ -6,14 +6,30 @@ export class LandinPage extends Basepage{
         super(page)
     }
 
-    async open_landing_page(){
+    async open_landing_page(): Promise<Page>{
+        await this.page.goto('https://www.odoo.sh/')
+        await this.page.getByRole('link', {name: 'Sign in'}).click()
+
+        // Enter odoo.sh dashboard
+        await this.page.locator('#login_field').fill('kiariekevin22@gmail.com')
+        await this.page.locator('#password').fill('$kingara120')
+        await this.page.click('input[type="submit"][value="Sign in"]');
+        await expect(this.page.getByRole('link', {name: 'ponty-erp'})).toBeVisible()
+
+        //Open odoo sh
+        await this.page.getByRole('link',{name: 'Open'}).click()
+        await expect(this.page).toHaveURL('https://www.odoo.sh/project/ponty-erp')
+
         // Open staging application
-    await this.page.locator('span.o_paas_branch a[href="/project/ponty-erp/branches/staging"]').click();
-    const page1Promise = this.page.waitForEvent('popup');
-    await this.page.getByRole('link', { name: 'CONNECT' }).click();
+        await this.page.locator('span.o_paas_branch a[href="/project/ponty-erp/branches/staging"]').click();
+        const [stagingPage] = await Promise.all([
+        this.page.waitForEvent('popup'),
+        this.page.getByRole('link', { name: 'CONNECT' }).click()
+        ]);
+
+        await stagingPage.waitForLoadState();
+
+        return stagingPage;   
     
-    // const page1 = await this.page.waitForEvent('popup');
-    // await page1.getByRole('option', { name: 'Dispatch' }).click();
-    // await page1.goto('https://ponty-erp-staging-31243847.dev.odoo.com/odoo/action-624');
     }
 }

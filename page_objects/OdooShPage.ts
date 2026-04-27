@@ -7,12 +7,13 @@ export class OdooShPage extends Basepage{
     }
 
     async visit(){
-        await this.page.goto('https://www.odoo.sh/')
+        
 
     }
 
     async open_odoo_staging(){
         // Click my projects drop down
+        await this.page.goto('https://www.odoo.sh/')
         await this.page.getByRole('link', {name: 'Sign in'}).click()
 
         // Enter odoo.sh dashboard
