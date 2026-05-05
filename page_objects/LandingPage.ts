@@ -10,7 +10,7 @@ export class LandinPage extends Basepage{
         await this.page.goto('https://www.odoo.sh/')
         await this.page.getByRole('link', {name: 'Sign in'}).click()
 
-        // Enter odoo.sh dashboard
+        // Enter odoo.sh dashboard through github
         await this.page.locator('#login_field').fill('kiariekevin22@gmail.com')
         await this.page.locator('#password').fill('$kingara120')
         await this.page.click('input[type="submit"][value="Sign in"]');
@@ -28,6 +28,10 @@ export class LandinPage extends Basepage{
         ]);
 
         await stagingPage.waitForLoadState();
+
+        // const banner = this.page.locator('#oe_neutralize_banner');
+
+        // await expect(banner).toBeVisible();
 
         return stagingPage;   
     
