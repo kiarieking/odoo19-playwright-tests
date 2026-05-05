@@ -18,12 +18,9 @@ test.describe.parallel('Dispatch workflow', () => {
 
         console.log(page.url())
         
-        // await page.locator("[name='action_reset']").click();
+        await dispatchpage.reset_btn.click()
 
-        // const quotationBtn = page.getByRole('radio', { name: 'Quotation' });
-
-        // await expect(quotationBtn).toHaveAttribute('aria-checked', 'true');
-
+        await expect(dispatchpage.confirm_disaptch).toBeVisible()
 
     })
 

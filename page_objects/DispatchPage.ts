@@ -2,8 +2,15 @@ import { expect, Locator, Page } from '@playwright/test'
 import { Basepage } from './BasePage'
 
 export class DispatchPage extends Basepage{
+    readonly reset_btn: Locator
+    readonly dispatch_status: Locator
+    readonly confirm_disaptch: Locator
+
     constructor(page:Page){
         super(page)
+        this.reset_btn = page.locator("[name='action_reset']")
+        this.dispatch_status = page.getByRole('radio', { name: 'Quotation' })
+        this.confirm_disaptch = page.locator("[name='action_reset']")
     }
 
     async openDispatch(){
