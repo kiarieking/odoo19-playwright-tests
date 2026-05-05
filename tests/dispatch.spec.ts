@@ -15,13 +15,25 @@ test.describe.parallel('Dispatch workflow', () => {
         const dispatchpage = new DispatchPage(stagingpage)
 
         await dispatchpage.openDispatch()
-
-        console.log(page.url())
         
         await dispatchpage.reset_btn.click()
 
         await expect(dispatchpage.confirm_disaptch).toBeVisible()
 
+    })
+
+    test ('Approve dispatch', async({page}) => {
+        test.setTimeout(60000)
+        const landingpage = new LandinPage(page)
+        const stagingpage = await landingpage.open_landing_page();
+
+        const dispatchpage = new DispatchPage(stagingpage)
+
+        await dispatchpage.openDispatch()
+        
+        await dispatchpage.approve_dispatch.click()
+
+        await expect(dispatchpage.post_dispatch).toBeVisible()
     })
 
 

@@ -5,12 +5,16 @@ export class DispatchPage extends Basepage{
     readonly reset_btn: Locator
     readonly dispatch_status: Locator
     readonly confirm_disaptch: Locator
+    readonly approve_dispatch: Locator
+    readonly post_dispatch: Locator
 
     constructor(page:Page){
         super(page)
         this.reset_btn = page.locator("[name='action_reset']")
         this.dispatch_status = page.getByRole('radio', { name: 'Quotation' })
         this.confirm_disaptch = page.locator("[name='action_reset']")
+        this.approve_dispatch = page.locator("[name='action_approve']")
+        this.post_dispatch = page.locator("[name='action_post']")
     }
 
     async openDispatch(){
