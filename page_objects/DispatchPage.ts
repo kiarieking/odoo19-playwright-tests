@@ -7,6 +7,8 @@ export class DispatchPage extends Basepage{
     readonly confirm_disaptch: Locator
     readonly approve_dispatch: Locator
     readonly post_dispatch: Locator
+    readonly confirm_dispatch: Locator
+    readonly dispatch_action: Locator
 
     constructor(page:Page){
         super(page)
@@ -15,6 +17,8 @@ export class DispatchPage extends Basepage{
         this.confirm_disaptch = page.locator("[name='action_reset']")
         this.approve_dispatch = page.locator("[name='action_approve']")
         this.post_dispatch = page.locator("[name='action_post']")
+        this.confirm_dispatch = page.locator("[name='action_allocate']")
+        this.dispatch_action = page.locator("[name='action_dispatch']")
     }
 
     async openDispatch(){
@@ -29,10 +33,16 @@ export class DispatchPage extends Basepage{
         const januaryGroup = this.page.locator('tr:has-text("January 2023")');
         await expect(januaryGroup).toBeVisible({timeout: 15000});
         await januaryGroup.click();
-        await this.page.locator('text=Cancelled').click()
-        await this.page.locator('tr.o_data_row').first().click()
-        await this.page.waitForTimeout(15000);
+        // await this.page.locator('text=Cancelled').click()
+        // await this.page.locator('tr.o_data_row').first().click()
+        // await this.page.waitForTimeout(15000);
 
+    }
+
+    async openDispatchStatus(status: string){
+        await this.page.locator(`text=${status}`).click()
+        await this.page.locator('tr.o_data_row').first().click()
+        await this.page.waitForTimeout(5000);
     }
 
 }
