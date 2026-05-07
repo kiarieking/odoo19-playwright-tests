@@ -3,11 +3,11 @@ import { LandinPage } from "../page_objects/LandingPage"
 import { DispatchPage } from "../page_objects/DispatchPage"
 
 
-// test.describe('Dispatch workflow', () => {
+test.describe.serial('Dispatch workflow', () => {
 
-//     test.beforeEach(async({page}) => {
+    test.beforeEach(async({page}) => {
         
-//     })
+    })
 
     test ('Reset cancelled dispatch to draft', async({page}) => {
         test.setTimeout(60000)
@@ -22,7 +22,7 @@ import { DispatchPage } from "../page_objects/DispatchPage"
         
         await dispatchpage.reset_btn.click()
 
-        await expect(dispatchpage.confirm_disaptch).toBeVisible()
+        await expect(dispatchpage.confirm_dispatch).toBeVisible()
 
     })
 
@@ -77,6 +77,6 @@ import { DispatchPage } from "../page_objects/DispatchPage"
     })
 
 
-// })
+})
 
 
