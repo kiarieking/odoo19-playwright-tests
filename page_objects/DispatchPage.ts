@@ -10,6 +10,7 @@ export class DispatchPage extends Basepage{
     readonly confirm_dispatch: Locator
     readonly dispatch_action: Locator
     readonly confirm_delivered: Locator
+    readonly delivered_status_bar: Locator
 
     constructor(page:Page){
         super(page)
@@ -21,6 +22,7 @@ export class DispatchPage extends Basepage{
         this.confirm_dispatch = page.locator("[name='action_allocate']")
         this.dispatch_action = page.locator("[name='action_dispatch']")
         this.confirm_delivered = page.locator("[name='action_delivered']")
+        this.delivered_status_bar = page.getByRole('radio', {name: 'Delivered'})
     }
 
     async openDispatch(){
