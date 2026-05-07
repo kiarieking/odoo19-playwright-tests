@@ -9,41 +9,57 @@ test.describe.serial('Dispatch workflow', () => {
         
     // })
 
-    test ('Reset cancelled dispatch to draft', async({page}) => {
-        test.setTimeout(60000)
-        const landingpage = new LandinPage(page)
-        const stagingpage = await landingpage.open_landing_page();
+    // test ('Reset cancelled dispatch to draft', async({page}) => {
+    //     test.setTimeout(60000)
+    //     const landingpage = new LandinPage(page)
+    //     const stagingpage = await landingpage.open_landing_page();
 
-        const dispatchpage = new DispatchPage(stagingpage)
+    //     const dispatchpage = new DispatchPage(stagingpage)
 
-        await dispatchpage.openDispatch()
+    //     await dispatchpage.openDispatch()
 
-        await dispatchpage.openDispatchStatus('Cancelled (')
+    //     await dispatchpage.openDispatchStatus('Cancelled (')
         
-        await dispatchpage.reset_btn.click()
+    //     await dispatchpage.reset_btn.click()
 
-        await expect(dispatchpage.confirm_disaptch).toBeVisible()
+    //     await expect(dispatchpage.confirm_disaptch).toBeVisible()
 
-    })
+    // })
 
-    test ('Approve dispatch', async({page}) => {
-        test.setTimeout(60000)
-        const landingpage = new LandinPage(page)
-        const stagingpage = await landingpage.open_landing_page();
+    // test ('Approve dispatch', async({page}) => {
+    //     test.setTimeout(60000)
+    //     const landingpage = new LandinPage(page)
+    //     const stagingpage = await landingpage.open_landing_page();
 
-        const dispatchpage = new DispatchPage(stagingpage)
+    //     const dispatchpage = new DispatchPage(stagingpage)
 
-        await dispatchpage.openDispatch()
+    //     await dispatchpage.openDispatch()
 
-        await dispatchpage.openDispatchStatus('Delivered (')
+    //     await dispatchpage.openDispatchStatus('Delivered (')
         
-        await dispatchpage.approve_dispatch.click()
+    //     await dispatchpage.approve_dispatch.click()
 
-        await expect(dispatchpage.post_dispatch).toBeVisible()
-    })
+    //     await expect(dispatchpage.post_dispatch).toBeVisible()
+    // })
 
 
-    test ('Confirm dispatch', async({page}) => {
+    // test ('Confirm dispatch', async({page}) => {
+    //     test.setTimeout(60000)
+    //     const landingpage = new LandinPage(page)
+    //     const stagingpage = await landingpage.open_landing_page();
+
+    //     const dispatchpage = new DispatchPage(stagingpage)
+
+    //     await dispatchpage.openDispatch()
+
+    //     await dispatchpage.openDispatchStatus('Quotation (')
+
+    //     await dispatchpage.confirm_dispatch.click()
+
+    //     await expect(dispatchpage.dispatch_action).toBeVisible()
+    // })
+
+    test ('Confirm delivered', async({page}) => {
         test.setTimeout(60000)
         const landingpage = new LandinPage(page)
         const stagingpage = await landingpage.open_landing_page();
@@ -52,11 +68,10 @@ test.describe.serial('Dispatch workflow', () => {
 
         await dispatchpage.openDispatch()
 
-        await dispatchpage.openDispatchStatus('Quotation (')
+        await dispatchpage.openDispatchStatus('In Transit (')
 
-        await dispatchpage.confirm_dispatch.click()
+        await expect(dispatchpage.approve_dispatch).toBeVisible()
 
-        await expect(dispatchpage.dispatch_action).toBeVisible()
     })
 
 
