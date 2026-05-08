@@ -13,6 +13,7 @@ export class DispatchPage extends Basepage{
     readonly delivered_status_bar: Locator
     readonly quotation_status_bar: Locator
     readonly to_approve_status_bar: Locator
+    readonly admin_ops_status_bar: Locator
 
     constructor(page:Page){
         super(page)
@@ -27,6 +28,7 @@ export class DispatchPage extends Basepage{
         this.delivered_status_bar = page.getByRole('radio', {name: 'Delivered'})
         this.quotation_status_bar = page.getByRole('radio', {name: 'Quotation'})
         this.to_approve_status_bar = page.getByRole('radio', {name: 'To Approve'})
+        this.admin_ops_status_bar = page.getByRole('radio', {name: 'Admin Operations'})
     }
 
     async openDispatch(){
