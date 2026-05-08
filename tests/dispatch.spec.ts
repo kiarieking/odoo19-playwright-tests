@@ -22,7 +22,6 @@ test.describe.serial('Dispatch workflow', () => {
         
         await dispatchpage.reset_btn.click()
 
-        // await expect(dispatchpage.confirm_dispatch).toBeVisible()
         await expect(dispatchpage.quotation_status_bar).toHaveAttribute('aria-checked', 'true')
 
     })
@@ -40,7 +39,6 @@ test.describe.serial('Dispatch workflow', () => {
         
         await dispatchpage.approve_dispatch.click()
 
-        // await expect(dispatchpage.post_dispatch).toBeVisible()
         await expect(dispatchpage.to_approve_status_bar).toHaveAttribute('aria-checked', 'true')
     })
 
@@ -58,7 +56,6 @@ test.describe.serial('Dispatch workflow', () => {
 
         await dispatchpage.confirm_dispatch.click()
 
-        // await expect(dispatchpage.dispatch_action).toBeVisible()
         await expect(dispatchpage.admin_ops_status_bar).toHaveAttribute('aria-checked', 'true')
     })
 
@@ -75,7 +72,6 @@ test.describe.serial('Dispatch workflow', () => {
 
         await dispatchpage.confirm_delivered.click()
 
-        // await expect(dispatchpage.approve_dispatch).toBeVisible()
         await expect(dispatchpage.delivered_status_bar).toHaveAttribute('aria-checked', 'true')
 
     })
