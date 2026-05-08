@@ -9,25 +9,7 @@ test.describe.serial('Dispatch workflow', () => {
         
     // })
 
-    test ('Reset cancelled dispatch to draft', async({page}) => {
-        test.setTimeout(60000)
-        const landingpage = new LandinPage(page)
-        const stagingpage = await landingpage.open_landing_page();
-
-        const dispatchpage = new DispatchPage(stagingpage)
-
-        await dispatchpage.openDispatch()
-
-        await dispatchpage.openDispatchStatus('Cancelled (')
-        
-        await dispatchpage.reset_btn.click()
-
-        // await expect(dispatchpage.confirm_dispatch).toBeVisible()
-        await expect(dispatchpage.quotation_status_bar).toHaveAttribute('aria-checked', 'true')
-
-    })
-
-    // test ('Approve dispatch', async({page}) => {
+    // test ('Reset cancelled dispatch to draft', async({page}) => {
     //     test.setTimeout(60000)
     //     const landingpage = new LandinPage(page)
     //     const stagingpage = await landingpage.open_landing_page();
@@ -36,13 +18,31 @@ test.describe.serial('Dispatch workflow', () => {
 
     //     await dispatchpage.openDispatch()
 
-    //     await dispatchpage.openDispatchStatus('Delivered (')
+    //     await dispatchpage.openDispatchStatus('Cancelled (')
         
-    //     await dispatchpage.approve_dispatch.click()
+    //     await dispatchpage.reset_btn.click()
 
-    //     // await expect(dispatchpage.post_dispatch).toBeVisible()
-    //     await expect(dispatchpage.to_approve_status_bar).toHaveAttribute('aria-checked', 'true')
+    //     // await expect(dispatchpage.confirm_dispatch).toBeVisible()
+    //     await expect(dispatchpage.quotation_status_bar).toHaveAttribute('aria-checked', 'true')
+
     // })
+
+    test ('Approve dispatch', async({page}) => {
+        test.setTimeout(60000)
+        const landingpage = new LandinPage(page)
+        const stagingpage = await landingpage.open_landing_page();
+
+        const dispatchpage = new DispatchPage(stagingpage)
+
+        await dispatchpage.openDispatch()
+
+        await dispatchpage.openDispatchStatus('Delivered (')
+        
+        await dispatchpage.approve_dispatch.click()
+
+        // await expect(dispatchpage.post_dispatch).toBeVisible()
+        await expect(dispatchpage.to_approve_status_bar).toHaveAttribute('aria-checked', 'true')
+    })
 
 
     // test ('Confirm dispatch', async({page}) => {
