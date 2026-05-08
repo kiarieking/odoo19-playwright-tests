@@ -7,7 +7,8 @@ pipeline{
                 echo "========executing A========"
                 sh '''
                     echo "Im here,again.."
-                    echo "Test"
+                    
+                    
                 '''
             }
     
