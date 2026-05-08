@@ -6,7 +6,8 @@ pipeline{
             steps{
                 echo "========executing A========"
                 sh '''
-                    echo "Im here, again.."
+                    echo "Im here,again.."
+                    echo "Test"
                 '''
             }
     
