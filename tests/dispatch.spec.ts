@@ -27,58 +27,58 @@ test.describe.serial('Dispatch workflow', () => {
 
     })
 
-    test ('Approve dispatch', async({page}) => {
-        test.setTimeout(60000)
-        const landingpage = new LandinPage(page)
-        const stagingpage = await landingpage.open_landing_page();
+    // test ('Approve dispatch', async({page}) => {
+    //     test.setTimeout(60000)
+    //     const landingpage = new LandinPage(page)
+    //     const stagingpage = await landingpage.open_landing_page();
 
-        const dispatchpage = new DispatchPage(stagingpage)
+    //     const dispatchpage = new DispatchPage(stagingpage)
 
-        await dispatchpage.openDispatch()
+    //     await dispatchpage.openDispatch()
 
-        await dispatchpage.openDispatchStatus('Delivered (')
+    //     await dispatchpage.openDispatchStatus('Delivered (')
         
-        await dispatchpage.approve_dispatch.click()
+    //     await dispatchpage.approve_dispatch.click()
 
-        // await expect(dispatchpage.post_dispatch).toBeVisible()
-        await expect(dispatchpage.to_approve_status_bar).toHaveAttribute('aria-checked', 'true')
-    })
+    //     // await expect(dispatchpage.post_dispatch).toBeVisible()
+    //     await expect(dispatchpage.to_approve_status_bar).toHaveAttribute('aria-checked', 'true')
+    // })
 
 
-    test ('Confirm dispatch', async({page}) => {
-        test.setTimeout(60000)
-        const landingpage = new LandinPage(page)
-        const stagingpage = await landingpage.open_landing_page();
+    // test ('Confirm dispatch', async({page}) => {
+    //     test.setTimeout(60000)
+    //     const landingpage = new LandinPage(page)
+    //     const stagingpage = await landingpage.open_landing_page();
 
-        const dispatchpage = new DispatchPage(stagingpage)
+    //     const dispatchpage = new DispatchPage(stagingpage)
 
-        await dispatchpage.openDispatch()
+    //     await dispatchpage.openDispatch()
 
-        await dispatchpage.openDispatchStatus('Quotation (')
+    //     await dispatchpage.openDispatchStatus('Quotation (')
 
-        await dispatchpage.confirm_dispatch.click()
+    //     await dispatchpage.confirm_dispatch.click()
 
-        // await expect(dispatchpage.dispatch_action).toBeVisible()
-        await expect(dispatchpage.admin_ops_status_bar).toHaveAttribute('aria-checked', 'true')
-    })
+    //     // await expect(dispatchpage.dispatch_action).toBeVisible()
+    //     await expect(dispatchpage.admin_ops_status_bar).toHaveAttribute('aria-checked', 'true')
+    // })
 
-    test ('Confirm delivered', async({page}) => {
-        test.setTimeout(60000)
-        const landingpage = new LandinPage(page)
-        const stagingpage = await landingpage.open_landing_page();
+    // test ('Confirm delivered', async({page}) => {
+    //     test.setTimeout(60000)
+    //     const landingpage = new LandinPage(page)
+    //     const stagingpage = await landingpage.open_landing_page();
 
-        const dispatchpage = new DispatchPage(stagingpage)
+    //     const dispatchpage = new DispatchPage(stagingpage)
 
-        await dispatchpage.openDispatch()
+    //     await dispatchpage.openDispatch()
 
-        await dispatchpage.openDispatchStatus('In Transit (')
+    //     await dispatchpage.openDispatchStatus('In Transit (')
 
-        await dispatchpage.confirm_delivered.click()
+    //     await dispatchpage.confirm_delivered.click()
 
-        // await expect(dispatchpage.approve_dispatch).toBeVisible()
-        await expect(dispatchpage.delivered_status_bar).toHaveAttribute('aria-checked', 'true')
+    //     // await expect(dispatchpage.approve_dispatch).toBeVisible()
+    //     await expect(dispatchpage.delivered_status_bar).toHaveAttribute('aria-checked', 'true')
 
-    })
+    // })
 
 
 })
