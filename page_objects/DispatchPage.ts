@@ -49,7 +49,7 @@ export class DispatchPage extends Basepage{
     async openDispatchStatus(status: string){
         await this.page.locator(`text=${status}`).click()
         await this.page.locator('tr.o_data_row').first().click()
-        await this.page.waitForTimeout(15000);
+        // await this.page.waitForTimeout(15000);
     }
 
 }

@@ -3,14 +3,16 @@ import { LandinPage } from "../page_objects/LandingPage"
 import { DispatchPage } from "../page_objects/DispatchPage"
 
 
-test.describe.serial('Dispatch workflow', () => {
+test.describe('Dispatch workflow', () => {
 
-    test.beforeEach(async({page}) => {
+    // test.beforeEach(async({page}) => {
         
-    })
+    // })
+
+    test.describe.configure({timeout: 300000, mode: "serial"})
 
     test ('Reset cancelled dispatch to draft', async({page}) => {
-        // test.setTimeout(6000000)
+        // test.setTimeout(60000)
         const landingpage = new LandinPage(page)
         const stagingpage = await landingpage.open_landing_page();
 
