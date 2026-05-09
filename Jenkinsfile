@@ -2,18 +2,31 @@ pipeline{
     agent any
     
     stages{
-        stage("A"){
+        stage("Setup playwright tests"){
             steps{
-                echo "========executing A========"
+                
                 sh '''
-                    echo "Im here,again.."
-                    
-                    
+                    echo "========Setting up tests========"
+
+                    /var/lib/jenkins/workspace/odoo19-playwright_main/execute_playwright.sh stage_setup_tests
+             
                 '''
             }
     
         }
+
+        stage("Run tests"){
+            steps{
+                sh '''
+                    echo "========Setting up tests========"
+
+                    /var/lib/jenkins/workspace/odoo19-playwright_main/execute_playwright.sh stage_run_tests
+                '''
+            }
+        }
     }
+
+
     post{
         always{
             echo "========always========"

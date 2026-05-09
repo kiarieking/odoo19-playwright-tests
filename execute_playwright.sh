@@ -15,11 +15,24 @@ setup_odoo19tests(){
 
  }
 
- run_odoo19tests(){
+run_odoo19tests(){
     cd $PATH
 
     npx playwright test tests/dispatch.spec.ts
  }
 
-setup_odoo19tests
+ case "$1" in 
+    stage_setup_tests)
+      setup_odoo19tests
+
+   ;;
+
+    stage_run_tests)
+      run_odoo19tests
+
+   ;;
+
+esac
+
+
 
