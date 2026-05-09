@@ -5,7 +5,7 @@ set -e
 setup_odoo19tests(){
     sudo apt update
 
-    sudo apt install nodejs npm
+    sudo apt install -y nodejs npm 
 
     cd /tmp/test_playwright
 
