@@ -20,7 +20,7 @@ setup_odoo19tests(){
  }
 
 run_odoo19tests(){
-    cd $PATH
+    cd /var/lib/jenkins/workspace/odoo19-playwright_main
 
     npx playwright test tests/dispatch.spec.ts
  }
