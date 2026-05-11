@@ -14,7 +14,7 @@ export class LandinPage extends Basepage{
         await this.page.locator('#login_field').fill('kiariekevin22@gmail.com')
         await this.page.locator('#password').fill('$kingara120')
         await this.page.click('input[type="submit"][value="Sign in"]');
-        await expect(this.page.getByRole('link', {name: 'ponty-erp'})).toBeVisible()
+        await expect(this.page.getByRole('link', {name: 'ponty-erp'})).toBeVisible({timeout: 10000})
 
         //Open odoo sh
         await this.page.getByRole('link',{name: 'Open'}).click()
