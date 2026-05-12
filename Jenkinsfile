@@ -19,13 +19,19 @@ pipeline{
             steps{
                 
                 withCredentials([
-                    string(credentialsId: 'kiarieking', variable: 'GITHUB_USER'),
-                    string(credentialsId: 'github_password', variable: 'GITHUB_PASSWORD')
+                    usernamePassword([
+                        credentialsId: 'github_password',
+                        usernameVariable: 'GITHUB_USER',
+                        passwordVariable: 'GITHUB_PASSWORD'
+                    ])
 
                  ]){
 
                 sh '''
                     echo "========Running tests========"
+
+                    export GITHUB_USER=$GITHUB_USER
+                    export GITHUB_PASSWORD=$GITHUB_PASSWORD
 
                     /var/lib/jenkins/workspace/odoo19-playwright_main/execute_playwright.sh stage_run_tests
                 '''
