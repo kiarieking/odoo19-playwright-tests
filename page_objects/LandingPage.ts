@@ -13,6 +13,7 @@ export class LandinPage extends Basepage{
         // Enter odoo.sh dashboard through github
         await this.page.locator('#login_field').fill('kiarieking')
         await this.page.locator('#password').fill(process.env.GITHUB_PASSWORD!)
+        console.log(process.env.GITHUB_PASSWORD!)
         await this.page.click('input[type="submit"][value="Sign in"]');
         await this.page.screenshot({ path: 'after-login.png', fullPage: true });
         console.log(await this.page.url());
