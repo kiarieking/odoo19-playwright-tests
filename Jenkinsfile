@@ -22,15 +22,15 @@ pipeline{
                     string(credentialsId: 'kiarieking', variable: 'GITHUB_USER'),
                     string(credentialsId: 'github_password', variable: 'GITHUB_PASSWORD')
 
-               
+                 ]){
 
                 sh '''
                     echo "========Running tests========"
 
                     /var/lib/jenkins/workspace/odoo19-playwright_main/execute_playwright.sh stage_run_tests
                 '''
-
-                 ])
+                 }
+                
             }
         }
     }
