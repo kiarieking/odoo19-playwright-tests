@@ -1,14 +1,14 @@
 pipeline{
-    agent any
+    agent {
+        label : 'vmAagent'
+    }
     
     stages{
         stage("Setup playwright tests"){
             steps{
-                echo "========Setting up tests========"
-
                 
-                // sh '''
-                //     echo "========Setting up tests========"
+                sh '''
+                    echo "========Setting up tests========"
 
                 //     /var/lib/jenkins/workspace/odoo19-playwright_main/execute_playwright.sh stage_setup_tests
              
@@ -17,23 +17,21 @@ pipeline{
     
         }
 
-        // stage("Run tests"){
-        //     steps{
-        //         echo "========Running tests========"
+        stage("Run tests"){
+            steps{
+                sh '''
+                    echo "========Running tests========"
 
-        //         sh '''
-        //             echo "========Running tests========"
-
-        //             /var/lib/jenkins/workspace/odoo19-playwright_main/execute_playwright.sh stage_run_tests
-        //         '''
-        //     }
-        // }
+                    /var/lib/jenkins/workspace/odoo19-playwright_main/execute_playwright.sh stage_run_tests
+                '''
+            }
+        }
     }
 
 
     post{
         always{
-            echo "========always========"
+            echo "========Have MS teams here========"
         }
         success{
             echo "========pipeline executed successfully ========"
