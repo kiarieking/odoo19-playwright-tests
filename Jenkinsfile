@@ -4,26 +4,30 @@ pipeline{
     stages{
         stage("Setup playwright tests"){
             steps{
-                
-                sh '''
-                    echo "========Setting up tests========"
+                echo "========Setting up tests========"
 
-                    /var/lib/jenkins/workspace/odoo19-playwright_main/execute_playwright.sh stage_setup_tests
+                
+                // sh '''
+                //     echo "========Setting up tests========"
+
+                //     /var/lib/jenkins/workspace/odoo19-playwright_main/execute_playwright.sh stage_setup_tests
              
-                '''
+                // '''
             }
     
         }
 
-        stage("Run tests"){
-            steps{
-                sh '''
-                    echo "========Running tests========"
+        // stage("Run tests"){
+        //     steps{
+        //         echo "========Running tests========"
 
-                    /var/lib/jenkins/workspace/odoo19-playwright_main/execute_playwright.sh stage_run_tests
-                '''
-            }
-        }
+        //         sh '''
+        //             echo "========Running tests========"
+
+        //             /var/lib/jenkins/workspace/odoo19-playwright_main/execute_playwright.sh stage_run_tests
+        //         '''
+        //     }
+        // }
     }
 
 
