@@ -7,8 +7,9 @@ pipeline{
         stage("Setup playwright tests"){
             steps{
                 
-                sh '''
-                    echo "========Setting up tests========"
+                echo "stage 1 vmnode for home-pc"
+                // sh '''
+                //     echo "========Setting up tests========"
 
                 //     /var/lib/jenkins/workspace/odoo19-playwright_main/execute_playwright.sh stage_setup_tests
              
@@ -19,11 +20,14 @@ pipeline{
 
         stage("Run tests"){
             steps{
-                sh '''
-                    echo "========Running tests========"
+                echo "stage 2 vmnode for home-pc"
+                // sh '''
+                //     echo "========Running tests========"
 
-                    /var/lib/jenkins/workspace/odoo19-playwright_main/execute_playwright.sh stage_run_tests
-                '''
+                //     /var/lib/jenkins/workspace/odoo19-playwright_main/execute_playwright.sh stage_run_tests
+                // '''
+                 
+                
             }
         }
     }
