@@ -7,7 +7,7 @@ pipeline{
         stage("Setup playwright tests"){
             steps{
                 
-                echo "stage 1 vmnode for home-pc again 2"
+                echo "stage 1 vmnode for home-pc again 3"
                 // sh '''
                 //     echo "========Setting up tests========"
 
