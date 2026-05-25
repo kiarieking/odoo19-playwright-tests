@@ -1,6 +1,6 @@
 pipeline{
     agent {
-        label 'vmAgent'
+        label 'vmAagent'
     }
     
     stages{
