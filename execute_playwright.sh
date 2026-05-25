@@ -9,7 +9,7 @@ setup_odoo19tests(){
 
     sudo apt install -y nodejs npm 
 
-    cd /home/vagrant/jenkins/workspace/odoo19-playwright_main
+    cd /home/jenkins/workspace/odoo19-playwright_main
 
     pwd
 
@@ -20,7 +20,7 @@ setup_odoo19tests(){
  }
 
 run_odoo19tests(){
-    cd /home/vagrant/jenkins/workspace/odoo19-playwright_main
+    cd /home/jenkins/workspace/odoo19-playwright_main
 
     npx playwright test tests/dispatch.spec.ts
  }
