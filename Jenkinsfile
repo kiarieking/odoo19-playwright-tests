@@ -11,7 +11,7 @@ pipeline{
                 sh '''
                     echo "========Setting up tests========"
 
-                    /home/vagrant/jenkins/workspace/odoo19-playwright_main/execute_playwright.sh stage_setup_tests
+                    /home/jenkins/workspace/odoo19-playwright_main/execute_playwright.sh stage_setup_tests
              
                 '''
             }
@@ -24,7 +24,7 @@ pipeline{
                 sh '''
                     echo "========Running tests========"
 
-                    /home/vagrant/jenkins/workspace/odoo19-playwright_main/execute_playwright.sh stage_run_tests
+                    /home/jenkins/workspace/odoo19-playwright_main/execute_playwright.sh stage_run_tests
                 '''
                  
                 
