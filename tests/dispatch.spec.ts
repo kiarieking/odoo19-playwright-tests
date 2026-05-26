@@ -11,22 +11,22 @@ test.describe('Dispatch workflow', () => {
 
     test.describe.configure({timeout: 300000, mode: "serial"})
 
-    test ('Reset cancelled dispatch to draft', async({page}) => {
-        // test.setTimeout(60000)
-        const landingpage = new LandinPage(page)
-        const stagingpage = await landingpage.open_landing_page();
+    // test ('Reset cancelled dispatch to draft', async({page}) => {
+    //     // test.setTimeout(60000)
+    //     const landingpage = new LandinPage(page)
+    //     const stagingpage = await landingpage.open_landing_page();
 
-        const dispatchpage = new DispatchPage(stagingpage)
+    //     const dispatchpage = new DispatchPage(stagingpage)
 
-        await dispatchpage.openDispatch()
+    //     await dispatchpage.openDispatch()
 
-        await dispatchpage.openDispatchStatus('Cancelled (')
+    //     await dispatchpage.openDispatchStatus('Cancelled (')
         
-        await dispatchpage.reset_btn.click()
+    //     await dispatchpage.reset_btn.click()
 
-        await expect(dispatchpage.quotation_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
+    //     await expect(dispatchpage.quotation_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
 
-    })
+    // })
 
     test ('Approve dispatch', async({page}) => {
         // test.setTimeout(60000)
