@@ -1,7 +1,9 @@
 pipeline{
-    agent {
-        label 'vmAagent'
-    }
+    // agent {
+    //     label 'vmAagent'
+    // }
+
+    agent any
     
     stages{
         stage("Setup playwright tests"){
