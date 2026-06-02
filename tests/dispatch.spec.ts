@@ -28,7 +28,7 @@ test.describe('Dispatch workflow', () => {
 
     // })
 
-    test ('Approve dispatch (with dispatch date new test with container)', async({page}) => {
+    test ('Approve dispatch (with dispatch date set)', async({page}) => {
         // test.setTimeout(60000)
         const landingpage = new LandinPage(page)
         const stagingpage = await landingpage.open_landing_page();
