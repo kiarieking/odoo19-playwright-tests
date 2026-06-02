@@ -5,9 +5,9 @@ set -e
 setup_odoo19tests(){
     pwd
 
-    apt update
+    sudo apt update
 
-    apt install -y nodejs npm 
+    sudo apt install -y nodejs npm 
 
     cd /var/lib/jenkins/workspace/odoo19-playwright_main
 
