@@ -6,12 +6,23 @@ pipeline{
     // agent any
     
     stages{
+        stage("Spin up docker container"){
+            steps{
+                echo "========Starting docker container========"
+                sh '''
+
+                    /home/kkiarie/code/docker/jenkins-container/start_docker_container.sh
+
+                '''
+            }
+        }
+
         stage("Setup playwright tests"){
             steps{
                 
                 echo "Setting up tests"
                 sh '''
-                    echo "========Setting up tests.========"
+                    echo "========Setting up tests========"
 
                     /home/jenkins/workspace/odoo19-playwright_main/execute_playwright.sh stage_setup_tests
              
