@@ -1,9 +1,15 @@
 pipeline{
-    agent {
-        label 'vmAagent'
-    }
+    // agent {
+    //     label 'vmAagent'
+    // }
 
     // agent any
+
+      agent {
+        docker {
+            image 'jenkins/inbound-agent'
+        }
+    }
     
     stages{
         stage("Spin up docker container"){
