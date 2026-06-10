@@ -4,7 +4,7 @@ pipeline{
     // }
 
     // agent any
-
+    // dynamic docker agent
       agent {
         docker {
             image 'jenkins/inbound-agent'
@@ -12,16 +12,16 @@ pipeline{
     }
     
     stages{
-        stage("Spin up docker container"){
-            steps{
-                echo "========Starting docker container========"
-                sh '''
+        // stage("Spin up docker container"){
+        //     steps{
+        //         echo "========Starting docker container========"
+        //         sh '''
 
-                    /home/kkiarie/code/docker/jenkins-container/start_docker_container.sh
+        //             /home/kkiarie/code/docker/jenkins-container/start_docker_container.sh
 
-                '''
-            }
-        }
+        //         '''
+        //     }
+        // }
 
         stage("Setup playwright tests"){
             steps{
