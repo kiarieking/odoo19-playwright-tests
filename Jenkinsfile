@@ -1,10 +1,5 @@
 pipeline{
-    // agent {
-    //     label 'vmAagent'
-    // }
-
-    // agent any
-    // dynamic docker agent in built in jenkins third check
+//    Docker pipeline plugin added
       agent {
         docker {
             image 'node:20-alpine'
@@ -12,17 +7,6 @@ pipeline{
     }
     
     stages{
-        // stage("Spin up docker container"){
-        //     steps{
-        //         echo "========Starting docker container========"
-        //         sh '''
-
-        //             /home/kkiarie/code/docker/jenkins-container/start_docker_container.sh
-
-        //         '''
-        //     }
-        // }
-
         stage("Setup playwright tests"){
             steps{
                 
