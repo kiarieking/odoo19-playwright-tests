@@ -4,7 +4,7 @@ pipeline{
     // }
 
     // agent any
-    // dynamic docker agent in built in jenkins
+    // dynamic docker agent in built in jenkins second check
       agent {
         dockerContainer {
             image 'jenkins/inbound-agent'
