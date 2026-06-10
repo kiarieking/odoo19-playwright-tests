@@ -4,7 +4,7 @@ pipeline{
     // }
 
     // agent any
-    // dynamic docker agent in built in jenkins second check
+    // dynamic docker agent in built in jenkins third check
       agent {
         docker {
             image 'node:20-alpine'
