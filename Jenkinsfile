@@ -14,7 +14,11 @@ pipeline{
                 sh '''
                     echo "========Setting up tests========"
 
-                    /home/jenkins/workspace/odoo19-playwright_main/execute_playwright.sh stage_setup_tests
+                    pwd
+
+                    ls
+
+                    ./execute_playwright.sh stage_setup_tests
              
                 '''
             }
