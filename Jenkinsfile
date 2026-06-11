@@ -1,5 +1,5 @@
 pipeline{
-//    Docker pipeline plugin added. Added user jenkins to docker group.
+//    Docker pipeline plugin added. Added user jenkins to docker group. Changes
       agent {
         docker {
             image 'node:20-alpine'
