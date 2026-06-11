@@ -2,7 +2,7 @@ pipeline{
 //    Docker pipeline plugin added. Added user jenkins to docker group. Local pc. 11/10/13
       agent {
         docker {
-            image 'debian:trixie-slim'
+            image 'mcr.microsoft.com/playwright:v1.59.1'
 
             // Make container to spin up as root again
 
