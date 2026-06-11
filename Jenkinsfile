@@ -3,6 +3,10 @@ pipeline{
       agent {
         docker {
             image 'debian:trixie-slim'
+
+            // Make container to spin up as root
+
+            args '-u root'
         }
     }
     
@@ -31,7 +35,7 @@ pipeline{
                 sh '''
                     echo "========Running tests.========"
 
-                    /home/jenkins/workspace/odoo19-playwright_main/execute_playwright.sh stage_run_tests
+                    ./execute_playwright.sh stage_run_tests
                 '''
                  
                 
