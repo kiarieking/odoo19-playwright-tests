@@ -4,7 +4,7 @@ pipeline{
         docker {
             image 'debian:trixie-slim'
 
-            // Make container to spin up as root
+            // Make container to spin up as root again
 
             args '-u root'
         }
