@@ -13,9 +13,9 @@ setup_odoo19tests(){
 
     pwd
 
-    sudo apt-get install -y curl
+    apt-get install -y curl
     curl -fsSL https://deb.nodesource.com/setup_24.x | sudo -E bash -
-    sudo apt-get install -y nodejs
+    apt-get install -y nodejs
     nsolid -v
 
     npm install
