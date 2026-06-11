@@ -2,7 +2,7 @@ pipeline{
 //    Docker pipeline plugin added. Added user jenkins to docker group. Local pc. 11/10/13
       agent {
         docker {
-            image 'node:20-alpine'
+            image '26.3.0-trixie'
         }
     }
     
