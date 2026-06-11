@@ -9,7 +9,7 @@ setup_odoo19tests(){
 
     apt install -y nodejs npm 
 
-    cd /home/jenkins/workspace/odoo19-playwright_main
+   #  cd /home/jenkins/workspace/odoo19-playwright_main
 
     pwd
 
