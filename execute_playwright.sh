@@ -3,29 +3,33 @@
 set -e
 
 setup_odoo19tests(){
-    pwd
+   #  pwd
 
-    apt update
+   #  apt update
 
-    apt install -y nodejs npm 
+   #  apt install -y nodejs npm 
 
-   #  cd /home/jenkins/workspace/odoo19-playwright_main
+   # #  cd /home/jenkins/workspace/odoo19-playwright_main
 
-    pwd
+   #  pwd
 
-    apt-get install -y curl
-    curl -fsSL https://deb.nodesource.com/setup_24.x | bash -
-    apt-get install -y nodejs
-    node -v
+   #  apt-get install -y curl
+   #  curl -fsSL https://deb.nodesource.com/setup_24.x | bash -
+   #  apt-get install -y nodejs
+   #  node -v
 
-    npm install
+   #  npm install
 
-    npx playwright install 
+   #  npx playwright install 
+
+   pwd
 
  }
 
 run_odoo19tests(){
     cd  /var/lib/jenkins/workspace/odoo19-playwright_main
+
+    npm ci
 
     npx playwright test tests/dispatch.spec.ts
  }
