@@ -9,6 +9,10 @@ pipeline{
             args '-u root'
         }
     }
+
+    environment {
+        MSTEAMS_HOOK = "https://defaulta96a137b5bac4d288f5b9ded43babd.cf.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/c5ed4be0f932414b88897c8144243c00/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=CTOJ7SbGjUeebDp1ygRr2O5sIei5bXD6pK535C9NHu8"
+    }
     
     stages{
 
@@ -29,13 +33,25 @@ pipeline{
 
     post{
         always{
-            echo "========Have MS teams here========"
+            echo "========Build is Complete========"
         }
         success{
             echo "========pipeline executed successfully ========"
+            office365ConnectorSend(
+                status: "Build Status",
+                webhookUrl: "${MSTEAMS_HOOK}",
+                message: "Build successful",
+                color: "#AAFF00",
+            )
         }
         failure{
             echo "========pipeline execution failed========"
+            office365ConnectorSend(
+                status: "Build Status",
+                webhookUrl: "${MSTEAMS_HOOK}",
+                message: "Build Failed",
+                color: "#ff3333",
+            )
         }
     }
 }
