@@ -95,7 +95,7 @@ test.describe('Dispatch workflow', () => {
         await expect(dispatchpage.post_error).toBeVisible()
     })
 
-    test ('Admin Operations', async({page}) => {
+    test ('Admin Operations tests', async({page}) => {
         const landingpage = new LandinPage(page)
         const stagingpage = await landingpage.open_landing_page();
 
