@@ -15,7 +15,7 @@ export class LandinPage extends Basepage{
         await this.page.locator('#password').fill('$kingara120')
         // console.log(process.env.GITHUB_PASSWORD!)
         await this.page.click('input[type="submit"][value="Sign in"]');
-        await this.page.screenshot({ path: 'after-login.png', fullPage: true });
+        // await this.page.screenshot({ path: 'after-login.png', fullPage: true });
         // console.log(await this.page.url());
         await expect(this.page.getByRole('link', {name: 'ponty-erp'})).toBeVisible({timeout: 10000})
 
