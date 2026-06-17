@@ -124,6 +124,21 @@ test.describe('Dispatch workflow', () => {
         await expect(dispatchpage.sales_order_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
     })
 
+    test ('Open posted dispatch test', async({page}) => {
+        const landingpage = new LandinPage(page)
+        const stagingpage = await landingpage.open_landing_page();
+
+        const dispatchpage = new DispatchPage(stagingpage)
+
+        await dispatchpage.openDispatch()
+
+        await dispatchpage.openDispatchStatus('Posted (')
+
+        await expect(dispatchpage.posted_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
+
+
+    })
+
 
 })
 
