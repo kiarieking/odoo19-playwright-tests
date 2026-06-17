@@ -111,6 +111,19 @@ test.describe('Dispatch workflow', () => {
 
     })
 
+    test ('Open sales Order', async({page}) => {
+        const landingpage = new LandinPage(page)
+        const stagingpage = await landingpage.open_landing_page();
+
+        const dispatchpage = new DispatchPage(stagingpage)
+
+        await dispatchpage.openDispatch()
+
+        await dispatchpage.openDispatchStatus('Sales Order (')
+
+        await expect(dispatchpage.sales_order_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
+    })
+
 
 })
 
