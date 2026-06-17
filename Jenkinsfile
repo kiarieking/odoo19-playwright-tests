@@ -1,5 +1,5 @@
 pipeline{
-//    Docker pipeline plugin added. Added user jenkins to docker group. Local pc. 17/6/2026:4:04 PM
+//    Docker pipeline plugin added. Added user jenkins to docker group. Local pc. 17/6/2026:4:12 PM
       agent {
         docker {
             image 'mcr.microsoft.com/playwright:v1.59.1'
