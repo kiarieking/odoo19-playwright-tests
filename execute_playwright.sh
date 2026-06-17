@@ -3,26 +3,7 @@
 set -e
 
 setup_odoo19tests(){
-   #  pwd
-
-   #  apt update
-
-   #  apt install -y nodejs npm 
-
-   # #  cd /home/jenkins/workspace/odoo19-playwright_main
-
-   #  pwd
-
-   #  apt-get install -y curl
-   #  curl -fsSL https://deb.nodesource.com/setup_24.x | bash -
-   #  apt-get install -y nodejs
-   #  node -v
-
-   #  npm install
-
-   #  npx playwright install 
-
-   pwd
+  
 
  }
 

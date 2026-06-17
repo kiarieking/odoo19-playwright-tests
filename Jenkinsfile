@@ -11,20 +11,6 @@ pipeline{
     }
     
     stages{
-        stage("Setup playwright tests"){
-            steps{
-                
-                echo "Setting up tests"
-                sh '''
-                    echo "========Setting up tests========"
-
-
-                    ./execute_playwright.sh stage_setup_tests
-             
-                '''
-            }
-    
-        }
 
         stage("Run tests"){
             steps{
