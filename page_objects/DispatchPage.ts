@@ -14,6 +14,7 @@ export class DispatchPage extends Basepage{
     readonly quotation_status_bar: Locator
     readonly to_approve_status_bar: Locator
     readonly admin_ops_status_bar: Locator
+    readonly inTransit_status_bar: Locator
     readonly ok_post_btn: Locator
     readonly post_error: Locator
 
@@ -31,11 +32,11 @@ export class DispatchPage extends Basepage{
         this.ok_post_btn = page.locator('//button[normalize-space()="Ok"]')
         this.post_error = page.locator('//p[normalize-space()="PODs not yet uploaded!"]')
 
-
         this.delivered_status_bar = page.getByRole('radio', {name: 'Delivered'})
         this.quotation_status_bar = page.getByRole('radio', {name: 'Quotation'})
         this.to_approve_status_bar = page.getByRole('radio', {name: 'To Approve'})
         this.admin_ops_status_bar = page.getByRole('radio', {name: 'Admin Operations'})
+        this.inTransit_status_bar = page.getByRole('radio', {name: 'In Transit'})
     }
 
     async openDispatch(){

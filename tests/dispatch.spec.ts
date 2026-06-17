@@ -95,6 +95,22 @@ test.describe('Dispatch workflow', () => {
         await expect(dispatchpage.post_error).toBeVisible()
     })
 
+    test ('Admin Operations', async({page}) => {
+        const landingpage = new LandinPage(page)
+        const stagingpage = await landingpage.open_landing_page();
+
+        const dispatchpage = new DispatchPage(stagingpage)
+
+        await dispatchpage.openDispatch()
+
+        await dispatchpage.openDispatchStatus('Admin Operations (')
+
+        await dispatchpage.dispatch_action.click()
+
+        await expect(dispatchpage.inTransit_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
+
+    })
+
 
 })
 
