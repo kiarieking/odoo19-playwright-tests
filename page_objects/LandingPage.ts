@@ -5,6 +5,11 @@ export class LandinPage extends Basepage{
     constructor(page:Page){
         super(page)
     }
+    async github_authorize_odoo(){
+        const authorize_button = await this.page.getByRole('button', { name: 'Authorize odoo'})
+
+        authorize_button.click()
+    }
 
     async open_landing_page(): Promise<Page>{
         await this.page.goto('https://www.odoo.sh/')
@@ -16,7 +21,10 @@ export class LandinPage extends Basepage{
         // console.log(process.env.GITHUB_PASSWORD!)
         await this.page.click('input[type="submit"][value="Sign in"]');
         // await this.page.screenshot({ path: 'after-login.png', fullPage: true });
-        // console.log(await this.page.url());
+        if (this.page.url() != "https://www.odoo.sh/project"){
+            await this.page.waitForTimeout(5000)
+            this.github_authorize_odoo()
+        }
         await expect(this.page.getByRole('link', {name: 'ponty-erp'})).toBeVisible({timeout: 10000})
 
         //Open odoo sh

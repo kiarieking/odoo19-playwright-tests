@@ -10,13 +10,16 @@ export class DispatchPage extends Basepage{
     readonly confirm_dispatch: Locator
     readonly dispatch_action: Locator
     readonly confirm_delivered: Locator
+    readonly ok_post_btn: Locator
+    readonly post_error: Locator
     readonly delivered_status_bar: Locator
     readonly quotation_status_bar: Locator
     readonly to_approve_status_bar: Locator
     readonly admin_ops_status_bar: Locator
     readonly inTransit_status_bar: Locator
-    readonly ok_post_btn: Locator
-    readonly post_error: Locator
+    readonly sales_order_status_bar: Locator
+    readonly posted_status_bar: Locator
+    
 
 
     constructor(page:Page){
@@ -37,6 +40,8 @@ export class DispatchPage extends Basepage{
         this.to_approve_status_bar = page.getByRole('radio', {name: 'To Approve'})
         this.admin_ops_status_bar = page.getByRole('radio', {name: 'Admin Operations'})
         this.inTransit_status_bar = page.getByRole('radio', {name: 'In Transit'})
+        this.sales_order_status_bar = page.getByRole('radio', {name: 'Sales Order'})
+        this.posted_status_bar = page.getByRole('radio', {name: 'Posted'})
     }
 
     async openDispatch(){

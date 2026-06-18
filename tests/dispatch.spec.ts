@@ -7,15 +7,23 @@ test.describe('Dispatch workflow', () => {
 
     let dispatchpage: DispatchPage
     test.beforeEach(async({page}) => {
-        const landingpage = new LandinPage(page)
-        const stagingpage = await landingpage.open_landing_page();
+        try {
+            const landingpage = new LandinPage(page)
+            const stagingpage = await landingpage.open_landing_page();
 
-        dispatchpage = new DispatchPage(stagingpage)
+            dispatchpage = new DispatchPage(stagingpage)
 
-        await dispatchpage.openDispatch()
+            await dispatchpage.openDispatch()
+            
+        } catch (error) {
+            console.log('Failed to open odoo application.')
+            throw error
+        }
+
+        
     })
 
-    test.describe.configure({timeout: 300000, mode: "serial"})
+    test.describe.configure({timeout: 300000, mode: "parallel"})
 
     test ('Reset cancelled dispatch to draft', async({page}) => {
 
