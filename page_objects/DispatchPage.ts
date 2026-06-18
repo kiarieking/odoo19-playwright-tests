@@ -12,6 +12,8 @@ export class DispatchPage extends Basepage{
     readonly confirm_delivered: Locator
     readonly ok_post_btn: Locator
     readonly post_error: Locator
+    readonly delivery_date: Locator
+    readonly todaysdate: Locator
     readonly delivered_status_bar: Locator
     readonly quotation_status_bar: Locator
     readonly to_approve_status_bar: Locator
@@ -34,6 +36,8 @@ export class DispatchPage extends Basepage{
         this.confirm_delivered = page.locator("[name='action_delivered']")
         this.ok_post_btn = page.locator('//button[normalize-space()="Ok"]')
         this.post_error = page.locator('//p[normalize-space()="PODs not yet uploaded!"]')
+        this.delivery_date = page.locator('#delivery_date_0')
+        this.todaysdate = page.locator('.o_date_item_cell.o_today')
 
         this.delivered_status_bar = page.getByRole('radio', {name: 'Delivered'})
         this.quotation_status_bar = page.getByRole('radio', {name: 'Quotation'})
@@ -63,6 +67,12 @@ export class DispatchPage extends Basepage{
         await this.page.locator(`text=${status}`).click()
         await this.page.locator('tr.o_data_row').first().click()
         // await this.page.waitForTimeout(15000);
+    }
+
+    async clickDeliveryDate(){
+        await this.delivery_date.click()
+
+        await this.todaysdate.click()
     }
 
 }

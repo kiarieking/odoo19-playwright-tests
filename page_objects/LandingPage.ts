@@ -5,10 +5,14 @@ export class LandinPage extends Basepage{
     constructor(page:Page){
         super(page)
     }
+
     async github_authorize_odoo(){
         const authorize_button = await this.page.getByRole('button', { name: 'Authorize odoo'})
 
-        authorize_button.click()
+        if (await authorize_button.isVisible({timeout:3000}).catch(() => false)) {
+            await authorize_button.click()
+        }
+    
     }
 
     async open_landing_page(): Promise<Page>{
