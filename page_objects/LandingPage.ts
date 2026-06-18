@@ -18,11 +18,11 @@ export class LandinPage extends Basepage{
         // // Enter odoo.sh dashboard through github
         await this.page.locator('#login_field').fill('kiariekevin22@gmail.com')
         await this.page.locator('#password').fill('$kingara120')
-        // console.log(process.env.GITHUB_PASSWORD!)
+        
         await this.page.click('input[type="submit"][value="Sign in"]');
-        // await this.page.screenshot({ path: 'after-login.png', fullPage: true });
+       
         if (this.page.url() != "https://www.odoo.sh/project"){
-            await this.page.waitForTimeout(5000)
+            
             this.github_authorize_odoo()
         }
         await expect(this.page.getByRole('link', {name: 'ponty-erp'})).toBeVisible({timeout: 10000})
