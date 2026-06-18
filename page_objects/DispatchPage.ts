@@ -70,9 +70,15 @@ export class DispatchPage extends Basepage{
     }
 
     async clickDeliveryDate(){
-        await this.delivery_date.click()
+        const value = await this.delivery_date.getAttribute('value')
 
-        await this.todaysdate.click()
+        if (!value || !value.trim()){
+            await this.delivery_date.click()
+
+            await this.todaysdate.click()
+        }
+
+        
     }
 
 }
