@@ -5,20 +5,19 @@ import { DispatchPage } from "../page_objects/DispatchPage"
 
 test.describe('Dispatch workflow', () => {
 
-    // test.beforeEach(async({page}) => {
-        
-    // })
+    let dispatchpage: DispatchPage
+    test.beforeEach(async({page}) => {
+        const landingpage = new LandinPage(page)
+        const stagingpage = await landingpage.open_landing_page();
+
+        dispatchpage = new DispatchPage(stagingpage)
+
+        await dispatchpage.openDispatch()
+    })
 
     test.describe.configure({timeout: 300000, mode: "serial"})
 
     test ('Reset cancelled dispatch to draft', async({page}) => {
-        // test.setTimeout(60000)
-        const landingpage = new LandinPage(page)
-        const stagingpage = await landingpage.open_landing_page();
-
-        const dispatchpage = new DispatchPage(stagingpage)
-
-        await dispatchpage.openDispatch()
 
         await dispatchpage.openDispatchStatus('Cancelled (')
         
@@ -29,13 +28,6 @@ test.describe('Dispatch workflow', () => {
     })
 
     test ('Approve dispatch (with dispatch date set)', async({page}) => {
-        // test.setTimeout(60000)
-        const landingpage = new LandinPage(page)
-        const stagingpage = await landingpage.open_landing_page();
-
-        const dispatchpage = new DispatchPage(stagingpage)
-
-        await dispatchpage.openDispatch()
 
         await dispatchpage.openDispatchStatus('Delivered (')
         
@@ -46,13 +38,6 @@ test.describe('Dispatch workflow', () => {
 
 
     test ('Confirm dispatch', async({page}) => {
-        // test.setTimeout(60000)
-        const landingpage = new LandinPage(page)
-        const stagingpage = await landingpage.open_landing_page();
-
-        const dispatchpage = new DispatchPage(stagingpage)
-
-        await dispatchpage.openDispatch()
 
         await dispatchpage.openDispatchStatus('Quotation (')
 
@@ -62,13 +47,6 @@ test.describe('Dispatch workflow', () => {
     })
 
     test ('Confirm delivered', async({page}) => {
-        // test.setTimeout(60000)
-        const landingpage = new LandinPage(page)
-        const stagingpage = await landingpage.open_landing_page();
-
-        const dispatchpage = new DispatchPage(stagingpage)
-
-        await dispatchpage.openDispatch()
 
         await dispatchpage.openDispatchStatus('In Transit (')
 
@@ -79,12 +57,6 @@ test.describe('Dispatch workflow', () => {
     })
 
     test ('Approve dispatch', async({page}) => {
-        const landingpage = new LandinPage(page)
-        const stagingpage = await landingpage.open_landing_page();
-
-        const dispatchpage = new DispatchPage(stagingpage)
-
-        await dispatchpage.openDispatch()
 
         await dispatchpage.openDispatchStatus('To Approve (')
 
@@ -96,12 +68,6 @@ test.describe('Dispatch workflow', () => {
     })
 
     test ('Admin Operations tests', async({page}) => {
-        const landingpage = new LandinPage(page)
-        const stagingpage = await landingpage.open_landing_page();
-
-        const dispatchpage = new DispatchPage(stagingpage)
-
-        await dispatchpage.openDispatch()
 
         await dispatchpage.openDispatchStatus('Admin Operations (')
 
@@ -112,12 +78,6 @@ test.describe('Dispatch workflow', () => {
     })
 
     test ('Open sales Order', async({page}) => {
-        const landingpage = new LandinPage(page)
-        const stagingpage = await landingpage.open_landing_page();
-
-        const dispatchpage = new DispatchPage(stagingpage)
-
-        await dispatchpage.openDispatch()
 
         await dispatchpage.openDispatchStatus('Sales Order (')
 
@@ -125,12 +85,6 @@ test.describe('Dispatch workflow', () => {
     })
 
     test ('Open posted dispatch test', async({page}) => {
-        const landingpage = new LandinPage(page)
-        const stagingpage = await landingpage.open_landing_page();
-
-        const dispatchpage = new DispatchPage(stagingpage)
-
-        await dispatchpage.openDispatch()
 
         await dispatchpage.openDispatchStatus('Posted (')
 
