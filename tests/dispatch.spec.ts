@@ -32,7 +32,7 @@ test.describe('Dispatch workflow', () => {
         
             await dispatchpage.reset_btn.click()
 
-            await expect(dispatchpage.quotation_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
+            await expect(dispatchpage.quotation_status_bar).toHaveAttribute('aria-checked', 'true')
 
             
         } catch (error) {
@@ -55,7 +55,7 @@ test.describe('Dispatch workflow', () => {
             
             await dispatchpage.approve_dispatch.click()
 
-            await expect(dispatchpage.to_approve_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
+            await expect(dispatchpage.to_approve_status_bar).toHaveAttribute('aria-checked', 'true')
             
         } catch (error) {
 
@@ -74,7 +74,7 @@ test.describe('Dispatch workflow', () => {
 
             await dispatchpage.confirm_dispatch.click()
 
-            await expect(dispatchpage.admin_ops_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
+            await expect(dispatchpage.admin_ops_status_bar).toHaveAttribute('aria-checked', 'true')
 
         } catch (error) {
             console.log('Confirm dispatch failed')
@@ -91,7 +91,7 @@ test.describe('Dispatch workflow', () => {
 
             await dispatchpage.confirm_delivered.click()
 
-            await expect(dispatchpage.delivered_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
+            await expect(dispatchpage.delivered_status_bar).toHaveAttribute('aria-checked', 'true')
 
         } catch (error) {
             
@@ -131,7 +131,7 @@ test.describe('Dispatch workflow', () => {
 
             await dispatchpage.dispatch_action.click()
 
-            await expect(dispatchpage.inTransit_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
+            await expect(dispatchpage.inTransit_status_bar).toHaveAttribute('aria-checked', 'true')
 
         } catch (error) {
             
@@ -149,7 +149,7 @@ test.describe('Dispatch workflow', () => {
 
             await dispatchpage.openDispatchStatus('Sales Order (')
 
-            await expect(dispatchpage.sales_order_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
+            await expect(dispatchpage.sales_order_status_bar).toHaveAttribute('aria-checked', 'true')
 
         } catch (error) {
 
@@ -166,7 +166,7 @@ test.describe('Dispatch workflow', () => {
             
             await dispatchpage.openDispatchStatus('Posted (')
 
-            await expect(dispatchpage.posted_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
+            await expect(dispatchpage.posted_status_bar).toHaveAttribute('aria-checked', 'true')
 
 
         } catch (error) {
