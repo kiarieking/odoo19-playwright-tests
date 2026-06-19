@@ -45,7 +45,7 @@ test.describe('Dispatch workflow', () => {
         
     })
 
-    test ('Approve dispatch (with dispatch date set)', async({page}) => {
+    test ('Approve dispatch (with dynamic dispatch date )', async({page}) => {
 
         try {
 
