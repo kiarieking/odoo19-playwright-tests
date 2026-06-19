@@ -8,7 +8,7 @@ run_odoo19tests(){
 
     npm ci
 
-    npx playwright test tests/dispatch.spec.ts --workers=4
+    npx playwright test tests/dispatch.spec.ts --workers=2
  }
 
  case "$1" in 
