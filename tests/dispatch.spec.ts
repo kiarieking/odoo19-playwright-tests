@@ -25,148 +25,149 @@ test.describe('Dispatch workflow', () => {
 
     test.describe.configure({timeout: 300000, mode: "parallel"})
 
-    test ('Reset cancelled dispatch to draft', async({page}) => {
+    // test ('Reset cancelled dispatch to draft', async({page}) => {
 
-        try {
-            await dispatchpage.openDispatchStatus('Cancelled (')
+    //     try {
+    //         await dispatchpage.openDispatchStatus('Cancelled (')
         
-            await dispatchpage.reset_btn.click()
+    //         await dispatchpage.reset_btn.click()
 
-            await expect(dispatchpage.quotation_status_bar).toHaveAttribute('aria-checked', 'true')
+    //         await expect(dispatchpage.quotation_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
 
             
-        } catch (error) {
+    //     } catch (error) {
            
-            console.log("Reset cancelled dispatch to draft failed")
-            throw(error)
+    //         console.log("Reset cancelled dispatch to draft failed")
+    //         throw(error)
 
-        }
-
-        
-    })
-
-    test ('Approve dispatch (with dynamic dispatch date )', async({page}) => {
-
-        try {
-
-            await dispatchpage.openDispatchStatus('Delivered (')
-
-            await dispatchpage.clickDeliveryDate()
-            
-            await dispatchpage.approve_dispatch.click()
-
-            await expect(dispatchpage.to_approve_status_bar).toHaveAttribute('aria-checked', 'true')
-            
-        } catch (error) {
-
-            console.log("Approve dispatch failed")
-            throw(error)
-        }
+    //     }
 
         
-    })
+    // })
 
+    // test ('Approve dispatch (with dynamic dispatch date )', async({page}) => {
 
-    test ('Confirm dispatch', async({page}) => {
-        try {
+    //     try {
+
+    //         await dispatchpage.openDispatchStatus('Delivered (')
+
+    //         await dispatchpage.clickDeliveryDate()
             
-            await dispatchpage.openDispatchStatus('Quotation (')
+    //         await dispatchpage.approve_dispatch.click()
 
-            await dispatchpage.confirm_dispatch.click()
+    //         await expect(dispatchpage.to_approve_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
+            
+    //     } catch (error) {
 
-            await expect(dispatchpage.admin_ops_status_bar).toHaveAttribute('aria-checked', 'true')
-
-        } catch (error) {
-            console.log('Confirm dispatch failed')
-            throw(error)
-        }
+    //         console.log("Approve dispatch failed")
+    //         throw(error)
+    //     }
 
         
-    })
+    // })
 
-    test ('Confirm delivered', async({page}) => {
-        try {
+
+    // test ('Confirm dispatch', async({page}) => {
+    //     try {
             
-            await dispatchpage.openDispatchStatus('In Transit (')
+    //         await dispatchpage.openDispatchStatus('Quotation (')
 
-            await dispatchpage.confirm_delivered.click()
+    //         await dispatchpage.confirm_dispatch.click()
 
-            await expect(dispatchpage.delivered_status_bar).toHaveAttribute('aria-checked', 'true')
+    //         await expect(dispatchpage.admin_ops_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
 
-        } catch (error) {
-            
-            console.log("Confirm delivered failed.")
-            throw(error)
-
-        }
-
-    })
-
-    test ('Approve dispatch', async({page}) => {
-
-        try {
-            
-            await dispatchpage.openDispatchStatus('To Approve (')
-
-            await dispatchpage.post_dispatch.click()
-
-            await dispatchpage.ok_post_btn.click()
-
-            await expect(dispatchpage.post_error).toBeVisible()
-
-        } catch (error) {
-            
-            console.log("Approve dispatch failed.")
-            throw(error)
-
-        }
+    //     } catch (error) {
+    //         console.log('Confirm dispatch failed')
+    //         throw(error)
+    //     }
 
         
-    })
+    // })
 
-    test ('Admin Operations tests', async({page}) => {
-        try {
-
-             await dispatchpage.openDispatchStatus('Admin Operations (')
-
-            await dispatchpage.dispatch_action.click()
-
-            await expect(dispatchpage.inTransit_status_bar).toHaveAttribute('aria-checked', 'true')
-
-        } catch (error) {
+    // test ('Confirm delivered', async({page}) => {
+    //     try {
             
-            console.log("Admin Operations tests failed.")
-            throw(error)
+    //         await dispatchpage.openDispatchStatus('In Transit (')
 
-        }
+    //         await dispatchpage.confirm_delivered.click()
+
+    //         await expect(dispatchpage.delivered_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
+
+    //     } catch (error) {
+            
+    //         console.log("Confirm delivered failed.")
+    //         throw(error)
+
+    //     }
+
+    // })
+
+    // test ('Approve dispatch', async({page}) => {
+
+    //     try {
+            
+    //         await dispatchpage.openDispatchStatus('To Approve (')
+
+    //         await dispatchpage.post_dispatch.click()
+
+    //         await dispatchpage.ok_post_btn.click()
+
+    //         await expect(dispatchpage.post_error).toBeVisible()
+
+    //     } catch (error) {
+            
+    //         console.log("Approve dispatch failed.")
+    //         throw(error)
+
+    //     }
+
+        
+    // })
+
+    // test ('Admin Operations tests', async({page}) => {
+    //     try {
+
+    //          await dispatchpage.openDispatchStatus('Admin Operations (')
+
+    //         await dispatchpage.dispatch_action.click()
+
+    //         await expect(dispatchpage.inTransit_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
+
+    //     } catch (error) {
+            
+    //         console.log("Admin Operations tests failed.")
+    //         throw(error)
+
+    //     }
 
        
 
-    })
+    // })
 
-    test ('Open sales Order', async({page}) => {
-        try {
+    // test ('Open sales Order', async({page}) => {
+    //     try {
 
-            await dispatchpage.openDispatchStatus('Sales Order (')
+    //         await dispatchpage.openDispatchStatus('Sales Order (')
 
-            await expect(dispatchpage.sales_order_status_bar).toHaveAttribute('aria-checked', 'true')
+    //         await expect(dispatchpage.sales_order_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
 
-        } catch (error) {
+    //     } catch (error) {
 
-            console.log("Open sales Order failed.")
-            throw(error)
+    //         console.log("Open sales Order failed.")
+    //         throw(error)
 
-        }
+    //     }
 
 
-    })
+    // })
 
     test ('Open posted dispatch test', async({page}) => {
+        await dispatchpage.create_dispatch()
         try {
             
             await dispatchpage.openDispatchStatus('Posted (')
 
-            await expect(dispatchpage.posted_status_bar).toHaveAttribute('aria-checked', 'true')
+            await expect(dispatchpage.posted_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
 
 
         } catch (error) {

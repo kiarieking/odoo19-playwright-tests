@@ -14,6 +14,16 @@ export class DispatchPage extends Basepage{
     readonly post_error: Locator
     readonly delivery_date: Locator
     readonly todaysdate: Locator
+    readonly new_dispatch: Locator
+    readonly customer: Locator
+    readonly product_type: Locator
+    readonly delivery_no: Locator
+    readonly vehicle: Locator
+    readonly driver: Locator
+    readonly dispatch_date: Locator
+    readonly select_customer: Locator
+    readonly select_product: Locator
+
     readonly delivered_status_bar: Locator
     readonly quotation_status_bar: Locator
     readonly to_approve_status_bar: Locator
@@ -38,6 +48,16 @@ export class DispatchPage extends Basepage{
         this.post_error = page.locator('//p[normalize-space()="PODs not yet uploaded!"]')
         this.delivery_date = page.locator('#delivery_date_0')
         this.todaysdate = page.locator('.o_date_item_cell.o_today')
+        this.new_dispatch = page.getByRole('button', {name: 'New'})
+        this.customer = page.locator('#partner_id_0')
+        this.product_type = page.locator('#po_type_0')
+        this.delivery_no = page.locator('#order_no_0')
+        this.vehicle = page.locator('#vehicle_id_0')
+        this.driver = page.locator('#driver_id_0')
+        this.dispatch_date = page.locator('#dispatch_date_0')
+        this.select_customer = page.locator('#partner_id_0_0_0')
+        this.select_product = page.getByRole('menuitem', { name: 'MOP-UP' })
+
 
         this.delivered_status_bar = page.getByRole('radio', {name: 'Delivered'})
         this.quotation_status_bar = page.getByRole('radio', {name: 'Quotation'})
@@ -79,6 +99,16 @@ export class DispatchPage extends Basepage{
         }
 
         
+    }
+
+    async create_dispatch(){
+        await this.new_dispatch.click()
+
+        await this.customer.click()
+        await this.select_customer.click()
+
+
+
     }
 
 }
