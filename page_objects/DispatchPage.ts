@@ -24,6 +24,11 @@ export class DispatchPage extends Basepage{
     readonly select_customer: Locator
     readonly select_product: Locator
     readonly select_vehicle: Locator
+    readonly add_line: Locator
+    readonly product_name: Locator
+    readonly select_product_line: Locator
+    readonly input_quantity_line: Locator
+    readonly save_dispatch: Locator
 
     readonly delivered_status_bar: Locator
     readonly quotation_status_bar: Locator
@@ -59,6 +64,11 @@ export class DispatchPage extends Basepage{
         this.select_customer = page.locator('#partner_id_0_0_0')
         this.select_product = page.getByRole('menuitem', { name: 'MOP-UP' })
         this.select_vehicle = page.locator('#vehicle_id_0_0_3')
+        this.add_line = page.getByRole('button', {name: 'Add a line'})
+        this.product_name = page.locator('div[name="product_id"] input')
+        this.select_product_line = page.locator('#autocomplete_0_0')
+        this.input_quantity_line = page.locator('div[name="quantity"] input')
+        this.save_dispatch = page.getByRole('button', { name: 'Save manually' })
 
         this.delivered_status_bar = page.getByRole('radio', {name: 'Delivered'})
         this.quotation_status_bar = page.getByRole('radio', {name: 'Quotation'})
@@ -107,12 +117,19 @@ export class DispatchPage extends Basepage{
 
         await this.customer.click()
         await this.select_customer.click()
-        await this.page.waitForTimeout(2000)
         await this.delivery_no.fill("123")
+        await this.vehicle.scrollIntoViewIfNeeded()
         await this.vehicle.click()
         await this.select_vehicle.click()
         await this.dispatch_date.click()
         await this.todaysdate.click()
+        await this.add_line.click()
+        await this.product_name.click()
+        await this.select_product_line.click()
+        await this.input_quantity_line.fill("2")
+        await this.save_dispatch.click()
+        await this.page.waitForTimeout(10000)
+
 
 
     }
