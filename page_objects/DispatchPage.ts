@@ -29,6 +29,7 @@ export class DispatchPage extends Basepage{
     readonly select_product_line: Locator
     readonly input_quantity_line: Locator
     readonly save_dispatch: Locator
+    readonly vehicle_input: Locator
 
     readonly delivered_status_bar: Locator
     readonly quotation_status_bar: Locator
@@ -58,12 +59,12 @@ export class DispatchPage extends Basepage{
         this.customer = page.locator('#partner_id_0')
         this.product_type = page.locator('#po_type_0')
         this.delivery_no = page.locator('#order_no_0')
-        this.vehicle = page.locator('#vehicle_id_0')
-        this.driver = page.locator('#driver_id_0')
+        this.vehicle = page.locator('[name="vehicle_id"] .o_field_many2one_selection .o_input_dropdown')
+        this.vehicle_input = page.locator('#vehicle_id_0')
         this.dispatch_date = page.locator('#dispatch_date_0')
         this.select_customer = page.locator('#partner_id_0_0_0')
         this.select_product = page.getByText("BEER TRANSFER")
-        this.select_vehicle = page.locator('#vehicle_id_0_0_3')
+        this.select_vehicle = page.getByText('PPD/PPD/KAA703C')
         this.add_line = page.getByRole('button', {name: 'Add a line'})
         this.product_name = page.locator('div[name="product_id"] input')
         this.select_product_line = page.locator('[data-choice-index="1"]')
@@ -120,9 +121,9 @@ export class DispatchPage extends Basepage{
         await this.product_type.click()
         await this.select_product.click()
         await this.delivery_no.fill("123")
-        await this.page.scr
-        await this.vehicle.scrollIntoViewIfNeeded()
-        await this.vehicle.click()
+        await expect(this.vehicle).toBeVisible()
+        // await this.vehicle.click()
+        await this.vehicle_input.click()
         await this.select_vehicle.click()
         await this.dispatch_date.click()
         await this.todaysdate.click()
