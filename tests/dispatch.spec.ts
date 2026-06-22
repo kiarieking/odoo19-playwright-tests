@@ -168,6 +168,7 @@ test.describe('Dispatch workflow', () => {
             await dispatchpage.openDispatchStatus('Posted (')
 
             await expect(dispatchpage.posted_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
+            await expect(dispatchpage.posted_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
 
 
         } catch (error) {
