@@ -62,11 +62,11 @@ export class DispatchPage extends Basepage{
         this.driver = page.locator('#driver_id_0')
         this.dispatch_date = page.locator('#dispatch_date_0')
         this.select_customer = page.locator('#partner_id_0_0_0')
-        this.select_product = page.getByRole('menuitem', { name: 'MOP-UP' })
+        this.select_product = page.getByText("BEER TRANSFER")
         this.select_vehicle = page.locator('#vehicle_id_0_0_3')
         this.add_line = page.getByRole('button', {name: 'Add a line'})
         this.product_name = page.locator('div[name="product_id"] input')
-        this.select_product_line = page.locator('#autocomplete_0_0')
+        this.select_product_line = page.locator('[data-choice-index="1"]')
         this.input_quantity_line = page.locator('div[name="quantity"] input')
         this.save_dispatch = page.getByRole('button', { name: 'Save manually' })
 
@@ -117,7 +117,10 @@ export class DispatchPage extends Basepage{
 
         await this.customer.click()
         await this.select_customer.click()
+        await this.product_type.click()
+        await this.select_product.click()
         await this.delivery_no.fill("123")
+        await this.page.scr
         await this.vehicle.scrollIntoViewIfNeeded()
         await this.vehicle.click()
         await this.select_vehicle.click()
@@ -128,7 +131,7 @@ export class DispatchPage extends Basepage{
         await this.select_product_line.click()
         await this.input_quantity_line.fill("2")
         await this.save_dispatch.click()
-        await this.page.waitForTimeout(10000)
+        await this.page.waitForTimeout(2000)
 
 
 
