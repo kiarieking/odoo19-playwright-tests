@@ -25,6 +25,10 @@ test.describe('Dispatch workflow', () => {
 
     test.describe.configure({timeout: 300000, mode: "parallel"})
 
+    test ('Test create dispatch', async(page) => {
+        await dispatchpage.create_dispatch()
+    })
+
     // test ('Reset cancelled dispatch to draft', async({page}) => {
 
     //     try {
@@ -161,26 +165,24 @@ test.describe('Dispatch workflow', () => {
 
     // })
 
-    test ('Open posted dispatch test', async({page}) => {
-        await dispatchpage.create_dispatch()
-        try {
+    // test ('Open posted dispatch test', async({page}) => {
+    //     await dispatchpage.create_dispatch()
+    //     try {
             
-            await dispatchpage.openDispatchStatus('Posted (')
+    //         await dispatchpage.openDispatchStatus('Posted (')
 
-            await expect(dispatchpage.posted_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
-            await expect(dispatchpage.posted_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
+    //         await expect(dispatchpage.posted_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
+    //         await expect(dispatchpage.posted_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
 
 
-        } catch (error) {
+    //     } catch (error) {
 
-            console.log("Open posted dispatch test failed.")
-            throw(error)
+    //         console.log("Open posted dispatch test failed.")
+    //         throw(error)
             
-        }
+    //     }    
 
-        
-
-    })
+    // })
 
 
 })

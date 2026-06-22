@@ -23,6 +23,7 @@ export class DispatchPage extends Basepage{
     readonly dispatch_date: Locator
     readonly select_customer: Locator
     readonly select_product: Locator
+    readonly select_vehicle: Locator
 
     readonly delivered_status_bar: Locator
     readonly quotation_status_bar: Locator
@@ -57,7 +58,7 @@ export class DispatchPage extends Basepage{
         this.dispatch_date = page.locator('#dispatch_date_0')
         this.select_customer = page.locator('#partner_id_0_0_0')
         this.select_product = page.getByRole('menuitem', { name: 'MOP-UP' })
-
+        this.select_vehicle = page.locator('#vehicle_id_0_0_3')
 
         this.delivered_status_bar = page.getByRole('radio', {name: 'Delivered'})
         this.quotation_status_bar = page.getByRole('radio', {name: 'Quotation'})
@@ -106,7 +107,12 @@ export class DispatchPage extends Basepage{
 
         await this.customer.click()
         await this.select_customer.click()
-
+        await this.page.waitForTimeout(2000)
+        await this.delivery_no.fill("123")
+        await this.vehicle.click()
+        await this.select_vehicle.click()
+        await this.dispatch_date.click()
+        await this.todaysdate.click()
 
 
     }
