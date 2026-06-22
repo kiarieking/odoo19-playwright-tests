@@ -124,6 +124,8 @@ export class DispatchPage extends Basepage{
         await expect(this.vehicle).toBeVisible()
         // await this.vehicle.click()
         await this.vehicle_input.click()
+        await this.page.mouse.wheel(0, 350)
+        await this.page.waitForTimeout(5000)
         await this.select_vehicle.click()
         await this.dispatch_date.click()
         await this.todaysdate.click()
