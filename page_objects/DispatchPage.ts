@@ -128,7 +128,10 @@ export class DispatchPage extends Basepage{
         await this.select_customer.click()
         await this.product_type.click()
         await this.select_product.click()
-        await this.delivery_no.fill("1252")
+
+        const randint = Math.floor(Math.random()*1000000)
+
+        await this.delivery_no.fill(randint.toString())
         await this.page.waitForTimeout(2000)
         await this.page.mouse.wheel(0, 350)
         await expect(this.vehicle_input).toBeVisible()
