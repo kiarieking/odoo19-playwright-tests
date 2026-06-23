@@ -65,33 +65,33 @@ test.describe('Dispatch workflow', () => {
         
     // })
 
-    test ('Approve dispatch (with dynamic dispatch date )', async({page}) => {
+    // test ('Approve dispatch (with dynamic dispatch date )', async({page}) => {
 
-        try {
-            await dispatchpage.confirm_dispatch.click()
+    //     try {
+    //         await dispatchpage.confirm_dispatch.click()
 
-            await dispatchpage.dispatch_action.click()
+    //         await dispatchpage.dispatch_action.click()
 
-            await dispatchpage.confirm_delivered.click()
+    //         await dispatchpage.confirm_delivered.click()
 
-            // await dispatchpage.openDispatchStatus('Delivered (')
+    //         // await dispatchpage.openDispatchStatus('Delivered (')
 
-            await dispatchpage.clickDeliveryDate()
+    //         await dispatchpage.clickDeliveryDate()
             
-            await dispatchpage.approve_dispatch.click()
+    //         await dispatchpage.approve_dispatch.click()
 
-            await page.waitForTimeout(2000)
+    //         await page.waitForTimeout(2000)
 
-            await expect(dispatchpage.to_approve_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 30000})
+    //         await expect(dispatchpage.to_approve_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 30000})
             
-        } catch (error) {
+    //     } catch (error) {
 
-            console.log("Approve dispatch failed")
-            throw(error)
-        }
+    //         console.log("Approve dispatch failed")
+    //         throw(error)
+    //     }
 
         
-    })
+    // })
 
 
     // test ('Confirm dispatch', async({page}) => {
@@ -141,27 +141,40 @@ test.describe('Dispatch workflow', () => {
 
     // })
 
-    // test ('Approve dispatch', async({page}) => {
+    test ('Approve dispatch', async({page}) => {
 
-    //     try {
+        try {
+            await dispatchpage.confirm_dispatch.click()
+
+            await dispatchpage.dispatch_action.click()
+
+            await dispatchpage.confirm_delivered.click()
+
+            // await dispatchpage.openDispatchStatus('Delivered (')
+
+            await dispatchpage.clickDeliveryDate()
             
-    //         await dispatchpage.openDispatchStatus('To Approve (')
+            await dispatchpage.approve_dispatch.click()
 
-    //         await dispatchpage.post_dispatch.click()
-
-    //         await dispatchpage.ok_post_btn.click()
-
-    //         await expect(dispatchpage.post_error).toBeVisible()
-
-    //     } catch (error) {
+            await page.waitForTimeout(2000)
             
-    //         console.log("Approve dispatch failed.")
-    //         throw(error)
+            // await dispatchpage.openDispatchStatus('To Approve (')
 
-    //     }
+            await dispatchpage.post_dispatch.click()
+
+            await dispatchpage.ok_post_btn.click()
+
+            await expect(dispatchpage.post_error).toBeVisible()
+
+        } catch (error) {
+            
+            console.log("Approve dispatch failed.")
+            throw(error)
+
+        }
 
         
-    // })
+    })
 
     // test ('Admin Operations tests', async({page}) => {
     //     try {
