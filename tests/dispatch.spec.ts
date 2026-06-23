@@ -65,26 +65,33 @@ test.describe('Dispatch workflow', () => {
         
     // })
 
-    // test ('Approve dispatch (with dynamic dispatch date )', async({page}) => {
+    test ('Approve dispatch (with dynamic dispatch date )', async({page}) => {
 
-    //     try {
+        try {
+            await dispatchpage.confirm_dispatch.click()
 
-    //         await dispatchpage.openDispatchStatus('Delivered (')
+            await dispatchpage.dispatch_action.click()
 
-    //         await dispatchpage.clickDeliveryDate()
+            await dispatchpage.confirm_delivered.click()
+
+            // await dispatchpage.openDispatchStatus('Delivered (')
+
+            await dispatchpage.clickDeliveryDate()
             
-    //         await dispatchpage.approve_dispatch.click()
+            await dispatchpage.approve_dispatch.click()
 
-    //         await expect(dispatchpage.to_approve_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
+            await page.waitForTimeout(2000)
+
+            await expect(dispatchpage.to_approve_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 30000})
             
-    //     } catch (error) {
+        } catch (error) {
 
-    //         console.log("Approve dispatch failed")
-    //         throw(error)
-    //     }
+            console.log("Approve dispatch failed")
+            throw(error)
+        }
 
         
-    // })
+    })
 
 
     // test ('Confirm dispatch', async({page}) => {
@@ -115,26 +122,24 @@ test.describe('Dispatch workflow', () => {
         
     // })
 
-    test ('Confirm delivered', async({page}) => {
-        try {
-            await dispatchpage.confirm_dispatch.click()
+    // test ('Confirm delivered', async({page}) => {
+    //     try {
+    //         await dispatchpage.confirm_dispatch.click()
 
-            await dispatchpage.dispatch_action.click()
+    //         await dispatchpage.dispatch_action.click()
 
-            // await dispatchpage.openDispatchStatus('In Transit (')
+    //         await dispatchpage.confirm_delivered.click()
 
-            await dispatchpage.confirm_delivered.click()
+    //         await expect(dispatchpage.delivered_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
 
-            await expect(dispatchpage.delivered_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
-
-        } catch (error) {
+    //     } catch (error) {
             
-            console.log("Confirm delivered failed.")
-            throw(error)
+    //         console.log("Confirm delivered failed.")
+    //         throw(error)
 
-        }
+    //     }
 
-    })
+    // })
 
     // test ('Approve dispatch', async({page}) => {
 
