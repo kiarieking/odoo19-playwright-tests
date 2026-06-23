@@ -19,7 +19,6 @@ export class DispatchPage extends Basepage{
     readonly product_type: Locator
     readonly delivery_no: Locator
     readonly vehicle: Locator
-    readonly driver: Locator
     readonly dispatch_date: Locator
     readonly select_customer: Locator
     readonly select_product: Locator
@@ -30,6 +29,8 @@ export class DispatchPage extends Basepage{
     readonly input_quantity_line: Locator
     readonly save_dispatch: Locator
     readonly vehicle_input: Locator
+    readonly quotation_link: Locator
+    readonly searchbox: Locator
 
     readonly delivered_status_bar: Locator
     readonly quotation_status_bar: Locator
@@ -70,6 +71,8 @@ export class DispatchPage extends Basepage{
         this.select_product_line = page.locator('#autocomplete_0_0')
         this.input_quantity_line = page.locator('div[name="quantity"] input')
         this.save_dispatch = page.getByRole('button', { name: 'Save manually' })
+        this.quotation_link = page.getByRole('link', {name: 'KBL Quotations'})
+        this.searchbox = page.getByRole('searchbox')
 
         this.delivered_status_bar = page.getByRole('radio', {name: 'Delivered'})
         this.quotation_status_bar = page.getByRole('radio', {name: 'Quotation'})
@@ -139,7 +142,11 @@ export class DispatchPage extends Basepage{
         const order_number = this.page.locator("//div[@name='name']/span")
         const text = await order_number.textContent()
 
-        console.log(text)
+        if (!text){
+            throw new Error("Dispatch number was not generated")
+        }
+
+        return text.trim()
 
     }
 

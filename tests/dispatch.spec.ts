@@ -25,9 +25,11 @@ test.describe('Dispatch workflow', () => {
 
     test.describe.configure({timeout: 300000, mode: "parallel"})
 
-    test ('Test create dispatch', async(page) => {
-        await dispatchpage.create_dispatch()
-    })
+    // test ('Test create dispatch', async(page) => {
+    //     await dispatchpage.create_dispatch()
+        
+
+    // })
 
     // test ('Reset cancelled dispatch to draft', async({page}) => {
 
@@ -71,22 +73,29 @@ test.describe('Dispatch workflow', () => {
     // })
 
 
-    // test ('Confirm dispatch', async({page}) => {
-    //     try {
-            
-    //         await dispatchpage.openDispatchStatus('Quotation (')
+    test ('Confirm dispatch', async({page}) => {
+        try {
+            const order_no: string = dispatchpage.create_dispatch()
 
-    //         await dispatchpage.confirm_dispatch.click()
+            await dispatchpage.quotation_link.click()
 
-    //         await expect(dispatchpage.admin_ops_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
+            await dispatchpage.searchbox.click()
 
-    //     } catch (error) {
-    //         console.log('Confirm dispatch failed')
-    //         throw(error)
-    //     }
+            await dispatchpage.searchbox.fill(order_no)
+
+            // await dispatchpage.openDispatchStatus('Quotation (')
+
+            // await dispatchpage.confirm_dispatch.click()
+
+            // await expect(dispatchpage.admin_ops_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
+
+        } catch (error) {
+            console.log('Confirm dispatch failed')
+            throw(error)
+        }
 
         
-    // })
+    })
 
     // test ('Confirm delivered', async({page}) => {
     //     try {
