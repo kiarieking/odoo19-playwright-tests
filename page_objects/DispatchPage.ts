@@ -120,7 +120,7 @@ export class DispatchPage extends Basepage{
         await this.select_customer.click()
         await this.product_type.click()
         await this.select_product.click()
-        await this.delivery_no.fill("123")
+        await this.delivery_no.fill("1236")
         await this.page.waitForTimeout(2000)
         await this.page.mouse.wheel(0, 350)
         await expect(this.vehicle_input).toBeVisible()
@@ -136,7 +136,10 @@ export class DispatchPage extends Basepage{
         await this.save_dispatch.click()
         await this.page.waitForTimeout(2000)
 
+        const order_number = this.page.locator("//div[@name='name']/span")
+        const text = await order_number.textContent()
 
+        console.log(text)
 
     }
 
