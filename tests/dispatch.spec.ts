@@ -83,13 +83,17 @@ test.describe('Dispatch workflow', () => {
 
             await dispatchpage.searchbox.fill(order_no)
 
-            await page.waitForTimeout(5000)
+            await dispatchpage.searchby.click()
 
-            // await dispatchpage.openDispatchStatus('Quotation (')
+            await dispatchpage.result_claret.click()
 
-            // await dispatchpage.confirm_dispatch.click()
+            // await page.waitForTimeout(5000)
 
-            // await expect(dispatchpage.admin_ops_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
+            await dispatchpage.openDispatchStatus('Quotation (')
+
+            await dispatchpage.confirm_dispatch.click()
+
+            await expect(dispatchpage.admin_ops_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
 
         } catch (error) {
             console.log('Confirm dispatch failed')

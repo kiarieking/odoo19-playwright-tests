@@ -31,6 +31,8 @@ export class DispatchPage extends Basepage{
     readonly vehicle_input: Locator
     readonly quotation_link: Locator
     readonly searchbox: Locator
+    readonly searchby: Locator
+    readonly result_claret: Locator
 
     readonly delivered_status_bar: Locator
     readonly quotation_status_bar: Locator
@@ -73,6 +75,9 @@ export class DispatchPage extends Basepage{
         this.save_dispatch = page.getByRole('button', { name: 'Save manually' })
         this.quotation_link = page.getByRole('link', {name: 'KBL Quotations'})
         this.searchbox = page.getByRole('searchbox')
+        this.searchby = page.getByRole('menuitem').filter({hasText: 'Search Dispatch'})
+        this.result_claret = page.locator('tr:has-text("June 2026")')
+
 
         this.delivered_status_bar = page.getByRole('radio', {name: 'Delivered'})
         this.quotation_status_bar = page.getByRole('radio', {name: 'Quotation'})
@@ -123,7 +128,7 @@ export class DispatchPage extends Basepage{
         await this.select_customer.click()
         await this.product_type.click()
         await this.select_product.click()
-        await this.delivery_no.fill("1238")
+        await this.delivery_no.fill("1245")
         await this.page.waitForTimeout(2000)
         await this.page.mouse.wheel(0, 350)
         await expect(this.vehicle_input).toBeVisible()
