@@ -75,13 +75,15 @@ test.describe('Dispatch workflow', () => {
 
     test ('Confirm dispatch', async({page}) => {
         try {
-            const order_no: string = dispatchpage.create_dispatch()
+            const order_no: string =await dispatchpage.create_dispatch()
 
             await dispatchpage.quotation_link.click()
 
             await dispatchpage.searchbox.click()
 
             await dispatchpage.searchbox.fill(order_no)
+
+            await page.waitForTimeout(5000)
 
             // await dispatchpage.openDispatchStatus('Quotation (')
 
