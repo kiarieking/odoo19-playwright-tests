@@ -14,6 +14,20 @@ test.describe('Dispatch workflow', () => {
             dispatchpage = new DispatchPage(stagingpage)
 
             await dispatchpage.openDispatch()
+
+            const order_no: string =await dispatchpage.create_dispatch()
+
+            await dispatchpage.quotation_link.click()
+
+            await dispatchpage.searchbox.click()
+
+            await dispatchpage.searchbox.fill(order_no)
+
+            await dispatchpage.searchby.click()
+
+            await dispatchpage.result_claret.click()
+
+            await dispatchpage.openDispatchStatus('Quotation (')
             
         } catch (error) {
             console.log('Failed to open odoo application.')
@@ -75,21 +89,19 @@ test.describe('Dispatch workflow', () => {
 
     test ('Confirm dispatch', async({page}) => {
         try {
-            const order_no: string =await dispatchpage.create_dispatch()
+            // const order_no: string =await dispatchpage.create_dispatch()
 
-            await dispatchpage.quotation_link.click()
+            // await dispatchpage.quotation_link.click()
 
-            await dispatchpage.searchbox.click()
+            // await dispatchpage.searchbox.click()
 
-            await dispatchpage.searchbox.fill(order_no)
+            // await dispatchpage.searchbox.fill(order_no)
 
-            await dispatchpage.searchby.click()
+            // await dispatchpage.searchby.click()
 
-            await dispatchpage.result_claret.click()
+            // await dispatchpage.result_claret.click()
 
-            // await page.waitForTimeout(5000)
-
-            await dispatchpage.openDispatchStatus('Quotation (')
+            // await dispatchpage.openDispatchStatus('Quotation (')
 
             await dispatchpage.confirm_dispatch.click()
 
