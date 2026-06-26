@@ -40,33 +40,35 @@ test.describe('Dispatch workflow', () => {
 
     test.describe.configure({timeout: 300000, mode: "parallel"})
 
-    test ('Test create dispatch', async({page}) => {
-        console.log(order_no)
-        await expect(order_no).toBeTruthy()
+    // test ('Test create dispatch', async({page}) => {
+    //     console.log(order_no)
+    //     await expect(order_no).toBeTruthy()
         
         
 
-    })
+    // })
 
-    // test ('Reset cancelled dispatch to draft', async({page}) => {
+    test ('Reset cancelled dispatch to draft', async({page}) => {
 
-    //     try {
-    //         await dispatchpage.openDispatchStatus('Cancelled (')
+        try {
+            await dispatchpage.cancel_btn.click()
+
+            await expect(dispatchpage.cancelled_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 30000})
         
-    //         await dispatchpage.reset_btn.click()
+            await dispatchpage.reset_btn.click()
 
-    //         await expect(dispatchpage.quotation_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 15000})
+            await expect(dispatchpage.quotation_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 30000})
 
             
-    //     } catch (error) {
+        } catch (error) {
            
-    //         console.log("Reset cancelled dispatch to draft failed")
-    //         throw(error)
+            console.log("Reset cancelled dispatch to draft failed")
+            throw(error)
 
-    //     }
+        }
 
         
-    // })
+    })
 
     // test ('Approve dispatch (with dynamic dispatch date )', async({page}) => {
 

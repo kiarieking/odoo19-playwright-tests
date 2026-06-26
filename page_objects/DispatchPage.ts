@@ -33,6 +33,7 @@ export class DispatchPage extends Basepage{
     readonly searchbox: Locator
     readonly searchby: Locator
     readonly result_claret: Locator
+    readonly cancel_btn: Locator
 
     readonly delivered_status_bar: Locator
     readonly quotation_status_bar: Locator
@@ -41,6 +42,7 @@ export class DispatchPage extends Basepage{
     readonly inTransit_status_bar: Locator
     readonly sales_order_status_bar: Locator
     readonly posted_status_bar: Locator
+    readonly cancelled_status_bar: Locator
     
 
 
@@ -78,6 +80,7 @@ export class DispatchPage extends Basepage{
         this.searchby = page.getByRole('menuitem').filter({hasText: 'Search Dispatch'})
         // this.result_claret = page.locator('tr:has-text("June 2026")')
         this.result_claret = page.getByText('June 2026 (')
+        this.cancel_btn = page.locator('button[name="action_cancel"]')
 
         this.delivered_status_bar = page.getByRole('radio', {name: 'Delivered'})
         this.quotation_status_bar = page.getByRole('radio', {name: 'Quotation'})
@@ -86,6 +89,7 @@ export class DispatchPage extends Basepage{
         this.inTransit_status_bar = page.getByRole('radio', {name: 'In Transit'})
         this.sales_order_status_bar = page.getByRole('radio', {name: 'Sales Order'})
         this.posted_status_bar = page.getByRole('radio', {name: 'Posted'})
+        this.cancelled_status_bar = page.getByRole('radio', {name: 'Cancelled'})
     }
 
     async openDispatch(){
