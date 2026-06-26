@@ -99,20 +99,20 @@ test.describe('Dispatch workflow', () => {
     // })
 
 
-    test ('Confirm dispatch', async({page}) => {
-        try {
+    // test ('Confirm dispatch', async({page}) => {
+    //     try {
 
-            await dispatchpage.confirm_dispatch.click()
+    //         await dispatchpage.confirm_dispatch.click()
 
-            await expect(dispatchpage.admin_ops_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 30000})
+    //         await expect(dispatchpage.admin_ops_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 30000})
 
-        } catch (error) {
-            console.log('Confirm dispatch failed')
-            throw(error)
-        }
+    //     } catch (error) {
+    //         console.log('Confirm dispatch failed')
+    //         throw(error)
+    //     }
 
         
-    })
+    // })
 
     // test ('Confirm delivered', async({page}) => {
     //     try {
@@ -133,7 +133,7 @@ test.describe('Dispatch workflow', () => {
 
     // })
 
-    // test ('Approve dispatch', async({page}) => {
+    // test ('Approve delivered dispatch', async({page}) => {
 
     //     try {
     //         await dispatchpage.confirm_dispatch.click()
@@ -168,25 +168,25 @@ test.describe('Dispatch workflow', () => {
         
     // })
 
-    // test ('Admin Operations tests', async({page}) => {
-    //     try {
+    test ('Admin Operations dispatch tests', async({page}) => {
+        try {
 
-    //         //  await dispatchpage.openDispatchStatus('Admin Operations (')
-    //         await dispatchpage.confirm_dispatch.click()
+            //  await dispatchpage.openDispatchStatus('Admin Operations (')
+            await dispatchpage.confirm_dispatch.click()
 
-    //         await dispatchpage.dispatch_action.click()
+            await dispatchpage.dispatch_action.click()
 
-    //         await expect(dispatchpage.inTransit_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 30000})
+            await expect(dispatchpage.inTransit_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 30000})
 
-    //     } catch (error) {
+        } catch (error) {
             
-    //         console.log("Admin Operations tests failed.")
-    //         throw(error)
+            console.log("Admin Operations tests failed.")
+            throw(error)
 
-    //     }
+        }
 
        
-    // })
+    })
 
     // test ('Open sales Order', async({page}) => {
     //     try {
