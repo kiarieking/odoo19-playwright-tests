@@ -48,27 +48,27 @@ test.describe('Dispatch workflow', () => {
 
     // })
 
-    test ('Reset cancelled dispatch to draft', async({page}) => {
+    // test ('Reset cancelled dispatch to draft', async({page}) => {
 
-        try {
-            await dispatchpage.cancel_btn.click()
+    //     try {
+    //         await dispatchpage.cancel_btn.click()
 
-            await expect(dispatchpage.cancelled_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 30000})
+    //         await expect(dispatchpage.cancelled_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 30000})
         
-            await dispatchpage.reset_btn.click()
+    //         await dispatchpage.reset_btn.click()
 
-            await expect(dispatchpage.quotation_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 30000})
+    //         await expect(dispatchpage.quotation_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 30000})
 
             
-        } catch (error) {
+    //     } catch (error) {
            
-            console.log("Reset cancelled dispatch to draft failed")
-            throw(error)
+    //         console.log("Reset cancelled dispatch to draft failed")
+    //         throw(error)
 
-        }
+    //     }
 
         
-    })
+    // })
 
     // test ('Approve dispatch (with dynamic dispatch date )', async({page}) => {
 
@@ -99,33 +99,20 @@ test.describe('Dispatch workflow', () => {
     // })
 
 
-    // test ('Confirm dispatch', async({page}) => {
-    //     try {
-    //         const order_no: string =await dispatchpage.create_dispatch()
+    test ('Confirm dispatch', async({page}) => {
+        try {
 
-    //         await dispatchpage.quotation_link.click()
+            await dispatchpage.confirm_dispatch.click()
 
-    //         await dispatchpage.searchbox.click()
+            await expect(dispatchpage.admin_ops_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 30000})
 
-    //         await dispatchpage.searchbox.fill(order_no)
-
-    //         await dispatchpage.searchby.click()
-
-    //         await dispatchpage.result_claret.click()
-
-    //         await dispatchpage.openDispatchStatus('Quotation (')
-
-    //         await dispatchpage.confirm_dispatch.click()
-
-    //         await expect(dispatchpage.admin_ops_status_bar).toHaveAttribute('aria-checked', 'true', {timeout: 30000})
-
-    //     } catch (error) {
-    //         console.log('Confirm dispatch failed')
-    //         throw(error)
-    //     }
+        } catch (error) {
+            console.log('Confirm dispatch failed')
+            throw(error)
+        }
 
         
-    // })
+    })
 
     // test ('Confirm delivered', async({page}) => {
     //     try {
