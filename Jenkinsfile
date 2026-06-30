@@ -18,6 +18,9 @@ pipeline{
 
         stage("Run tests"){
             steps{
+                withEnv([
+                'BASE_URL=https://www.odoo.sh/'
+                ]) 
                 withCredentials([
                     usernamePassword(
                         credentialsId: 'github-odoo-login',
