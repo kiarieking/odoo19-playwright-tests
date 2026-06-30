@@ -20,14 +20,15 @@ pipeline{
             steps{
                 withEnv([
                 'BASE_URL=https://www.odoo.sh/'
-                ]) 
+                ])
+                { 
                 withCredentials([
                     usernamePassword(
                         credentialsId: 'github-odoo-login',
                         usernameVariable: 'GITHUB_USERNAME',
                         passwordVariable: 'GITHUB_PASSWORD'
                     )
-    ]) 
+    ])          
                 {
                 echo "Running tests"
                 sh '''
@@ -36,6 +37,7 @@ pipeline{
                     ./execute_playwright.sh stage_run_tests
                 '''
                  
+                }
                 }
             }
         }
