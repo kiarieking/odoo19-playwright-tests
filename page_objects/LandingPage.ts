@@ -1,6 +1,9 @@
 import { expect, Locator, Page } from '@playwright/test'
 import { Basepage } from './BasePage'
+import dotenv from 'dotenv'
+import { dot } from 'node:test/reporters'
 
+dotenv.config()
 export class LandinPage extends Basepage{
     constructor(page:Page){
         super(page)
@@ -16,12 +19,12 @@ export class LandinPage extends Basepage{
     }
 
     async open_landing_page(): Promise<Page>{
-        await this.page.goto('https://www.odoo.sh/')
+        await this.page.goto('/')
         await this.page.getByRole('link', {name: 'Sign in'}).click()
 
         // // Enter odoo.sh dashboard through github
-        await this.page.locator('#login_field').fill('kiariekevin22@gmail.com')
-        await this.page.locator('#password').fill('$kingara120')
+        await this.page.locator('#login_field').fill(process.env.GITHUB_USERNAME!)
+        await this.page.locator('#password').fill(process.env.GITHUB_PASSWORD!)
         
         await this.page.click('input[type="submit"][value="Sign in"]');
        
