@@ -79,7 +79,7 @@ export class DispatchPage extends Basepage{
         this.searchbox = page.getByRole('searchbox')
         this.searchby = page.getByRole('menuitem').filter({hasText: 'Search Dispatch'})
         // this.result_claret = page.locator('tr:has-text("June 2026")')
-        this.result_claret = page.getByText('June 2026 (')
+        this.result_claret = page.getByText('July 2026 (')
         this.cancel_btn = page.locator('button[name="action_cancel"]')
 
         this.delivered_status_bar = page.getByRole('radio', {name: 'Delivered'})
