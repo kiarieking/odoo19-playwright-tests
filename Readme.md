@@ -11,7 +11,7 @@ The tests automate common Dispatch workflows such as:
 * Fueling dispatches
 * Cancelling dispatches
 * Resetting dispatches to quotation
-* Validating business rules and workflow transitions
+
 
 The automation suite is designed to run:
 
