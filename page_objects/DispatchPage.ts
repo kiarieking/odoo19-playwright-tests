@@ -78,10 +78,11 @@ export class DispatchPage extends Basepage{
         this.searchbox = page.getByRole('searchbox')
         this.searchby = page.getByRole('menuitem').filter({hasText: 'Search Dispatch'})
         // this.result_claret = page.locator('tr:has-text("{Date}")')
-        const MONTHYEAR = `State ${new Date().toLocaleDateString('en-US', {
+        const MONTHYEAR = `${new Date().toLocaleDateString('en-US', {
             month: 'long',
             year:'numeric'
         })}`
+        console.log(MONTHYEAR)
         // this.result_claret = page.getByText('August 2026 (')
         this.result_claret = page.getByText(`${MONTHYEAR} (`)
         this.cancel_btn = page.locator('button[name="action_cancel"]')
