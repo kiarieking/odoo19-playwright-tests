@@ -43,7 +43,6 @@ export class DispatchPage extends Basepage{
     readonly sales_order_status_bar: Locator
     readonly posted_status_bar: Locator
     readonly cancelled_status_bar: Locator
-    
 
 
     constructor(page:Page){
@@ -69,7 +68,7 @@ export class DispatchPage extends Basepage{
         this.dispatch_date = page.locator('#dispatch_date_0')
         this.select_customer = page.locator('#partner_id_0_0_0')
         this.select_product = page.getByText("BEER TRANSFER")
-        this.select_vehicle = page.locator('#vehicle_id_0_0_3')
+        this.select_vehicle = page.locator('#vehicle_id_0_0_6')
         this.add_line = page.getByRole('button', {name: 'Add a line'})
         this.product_name = page.locator('div[name="product_id"] input')
         this.select_product_line = page.locator('#autocomplete_0_0')
@@ -78,8 +77,13 @@ export class DispatchPage extends Basepage{
         this.quotation_link = page.getByRole('link', {name: 'KBL Quotations'})
         this.searchbox = page.getByRole('searchbox')
         this.searchby = page.getByRole('menuitem').filter({hasText: 'Search Dispatch'})
-        // this.result_claret = page.locator('tr:has-text("June 2026")')
-        this.result_claret = page.getByText('July 2026 (')
+        // this.result_claret = page.locator('tr:has-text("{Date}")')
+        const MONTHYEAR = `State ${new Date().toLocaleDateString('en-US', {
+            month: 'long',
+            year:'numeric'
+        })}`
+        // this.result_claret = page.getByText('August 2026 (')
+        this.result_claret = page.getByText(`${MONTHYEAR} (`)
         this.cancel_btn = page.locator('button[name="action_cancel"]')
 
         this.delivered_status_bar = page.getByRole('radio', {name: 'Delivered'})
@@ -161,5 +165,7 @@ export class DispatchPage extends Basepage{
         return text.trim()
 
     }
+
+    
 
 }
