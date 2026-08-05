@@ -19,10 +19,12 @@ export class DispatchPage extends Basepage{
     readonly product_type: Locator
     readonly delivery_no: Locator
     readonly vehicle: Locator
+    readonly driver: Locator
     readonly dispatch_date: Locator
     readonly select_customer: Locator
     readonly select_product: Locator
     readonly select_vehicle: Locator
+    readonly select_driver: Locator
     readonly add_line: Locator
     readonly product_name: Locator
     readonly select_product_line: Locator
@@ -64,11 +66,13 @@ export class DispatchPage extends Basepage{
         this.product_type = page.locator('#po_type_0')
         this.delivery_no = page.locator('#order_no_0')
         this.vehicle = page.locator('[name="vehicle_id"] .o_field_many2one_selection .o_input_dropdown')
+        this.driver = page.locator('[name="driver_id"] input')
         this.vehicle_input = page.locator('#vehicle_id_0')
         this.dispatch_date = page.locator('#dispatch_date_0')
         this.select_customer = page.locator('#partner_id_0_0_0')
         this.select_product = page.getByText("BEER TRANSFER")
-        this.select_vehicle = page.locator('#vehicle_id_0_0_6')
+        this.select_vehicle = page.locator('#vehicle_id_0_0_1')
+        this.select_driver = page.locator('#driver_id_0_0_4')
         this.add_line = page.getByRole('button', {name: 'Add a line'})
         this.product_name = page.locator('div[name="product_id"] input')
         this.select_product_line = page.locator('#autocomplete_0_0')
@@ -147,6 +151,8 @@ export class DispatchPage extends Basepage{
         // await this.vehicle.click()
         await this.vehicle_input.click()
         await this.select_vehicle.click()
+        await this.driver.click()
+        await this.select_driver.click()
         await this.dispatch_date.click()
         await this.todaysdate.click()
         await this.add_line.click()
