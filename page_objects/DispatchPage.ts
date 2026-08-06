@@ -46,6 +46,7 @@ export class DispatchPage extends Basepage{
     readonly sales_order_status_bar: Locator
     readonly posted_status_bar: Locator
     readonly cancelled_status_bar: Locator
+    readonly dispatch_module_text: Locator
 
 
     constructor(page:Page){
@@ -101,23 +102,15 @@ export class DispatchPage extends Basepage{
         this.sales_order_status_bar = page.getByRole('radio', {name: 'Sales Order'})
         this.posted_status_bar = page.getByRole('radio', {name: 'Posted'})
         this.cancelled_status_bar = page.getByRole('radio', {name: 'Cancelled'})
+        this.dispatch_module_text = page.getByText('Dispatch')
     }
 
     async openDispatch(){
        
         await this.page.getByRole('option', { name: 'Dispatch' }).click();
-
-        
-        
-        // const groupRows = this.page.locator('tr.o_group_header');
-
-        // await expect(groupRows.first()).toBeVisible({ timeout: 20000 });
-     
-      
-        // const januaryGroup = this.page.locator('tr:has-text("January 2023")');
-        // await expect(januaryGroup).toBeVisible({timeout: 15000});
-        // await januaryGroup.click();
-
+        const text_dispatch =await this.dispatch_module_text.textContent()
+        console.log(`Dispatch string is ${text_dispatch}`)
+        await expect(text_dispatch).toContain('Dispatch')
     }
 
     async openDispatchStatus(status: string){
