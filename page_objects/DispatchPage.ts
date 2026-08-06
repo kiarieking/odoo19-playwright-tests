@@ -20,6 +20,7 @@ export class DispatchPage extends Basepage{
     readonly delivery_no: Locator
     readonly vehicle: Locator
     readonly driver: Locator
+    readonly driver_phone: Locator
     readonly dispatch_date: Locator
     readonly select_customer: Locator
     readonly select_product: Locator
@@ -67,6 +68,7 @@ export class DispatchPage extends Basepage{
         this.delivery_no = page.locator('#order_no_0')
         this.vehicle = page.locator('[name="vehicle_id"] .o_field_many2one_selection .o_input_dropdown')
         this.driver = page.locator('[name="driver_id"] input')
+        this.driver_phone = page.locator('[name="driver_phone"] input')
         this.vehicle_input = page.locator('#vehicle_id_0')
         this.dispatch_date = page.locator('#dispatch_date_0')
         this.select_customer = page.locator('#partner_id_0_0_0')
@@ -153,6 +155,7 @@ export class DispatchPage extends Basepage{
         await this.select_vehicle.click()
         await this.driver.click()
         await this.select_driver.click()
+        await this.driver_phone.fill('254112291144')
         await this.dispatch_date.click()
         await this.todaysdate.click()
         await this.add_line.click()
