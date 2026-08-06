@@ -19,10 +19,19 @@ export class LandinPage extends Basepage {
     }
 
     async handle_github_2fa() {
+        await this.page.waitForLoadState('domcontentloaded')
+
+        // GitHub defaults to a passkey prompt; switch to the authenticator app option
+        const moreOptions = this.page.getByRole('button', { name: 'More options' })
+        if (await moreOptions.isVisible({ timeout: 10000 }).catch(() => false)) {
+            await moreOptions.click()
+            await this.page.getByRole('link', { name: /Authenticator app/i }).click()
+        }
+
         const totpInput = this.page.locator('#app_totp, input[name="app_totp"]')
 
-        // Check if GitHub presented a 2FA prompt (5s timeout)
-        const needs2FA = await totpInput.isVisible({ timeout: 5000 }).catch(() => false)
+        // Check if GitHub presented a 2FA prompt
+        const needs2FA = await totpInput.isVisible({ timeout: 10000 }).catch(() => false)
 
         if (needs2FA) {
             const secret = process.env.GITHUB_TOTP_SECRET
@@ -42,12 +51,18 @@ export class LandinPage extends Basepage {
             const token = totp.generate()
             await totpInput.fill(token)
 
-            // Wait for redirect or submission completion
-            await this.page.waitForNavigation({ waitUntil: 'networkidle' }).catch(() => {})
+            // Fill doesn't reliably trigger GitHub's auto-submit JS on the code input,
+            // so submit explicitly. The click kicks off a multi-hop OAuth redirect
+            // (github -> odoo.sh/oauth/callback -> odoo.sh/project) that Playwright's
+            // own post-click wait never settles on, so don't wait on it here — the
+            // caller's expect() on the landed page handles waiting instead.
+            await this.page.getByRole('button', { name: 'Verify' }).click({ noWaitAfter: true })
         }
     }
 
-    async open_landing_page(): Promise<Page> {
+    // Full GitHub login flow. Only needed once, by the auth setup project —
+    // regular tests reuse the saved storageState and call open_staging_page() instead.
+    async login(): Promise<void> {
         await this.page.goto('/')
         await this.page.getByRole('link', { name: 'Sign in' }).click()
 
@@ -64,6 +79,11 @@ export class LandinPage extends Basepage {
             await this.github_authorize_odoo()
         }
 
+        await expect(this.page.getByRole('link', { name: 'ponty-erp' })).toBeVisible({ timeout: 30000 })
+    }
+
+    async open_staging_page(): Promise<Page> {
+        await this.page.goto('/project')
         await expect(this.page.getByRole('link', { name: 'ponty-erp' })).toBeVisible({ timeout: 10000 })
 
         // Open odoo.sh

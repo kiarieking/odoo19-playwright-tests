@@ -7,12 +7,14 @@ test.describe('Dispatch workflow', () => {
     let dispatchpage: DispatchPage;
     let order_no: string;
 
-    test.describe.configure({ timeout: 300000, mode: "parallel" });
+    // Tests share mutable `dispatchpage`/`order_no` state populated in beforeEach,
+    // so they must run serially within this file, not in parallel.
+    test.describe.configure({ timeout: 300000, mode: "serial" });
 
     test.beforeEach(async ({ page }) => {
         try {
             const landingpage = new LandinPage(page);
-            const stagingpage = await landingpage.open_landing_page();
+            const stagingpage = await landingpage.open_staging_page();
 
             dispatchpage = new DispatchPage(stagingpage);
 
