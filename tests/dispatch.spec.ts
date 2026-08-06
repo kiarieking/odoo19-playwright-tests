@@ -41,13 +41,13 @@ test.describe('Dispatch workflow', () => {
 
     test.describe.configure({timeout: 300000, mode: "parallel"})
 
-    // test ('Test create dispatch', async({page}) => {
-    //     console.log(order_no)
-    //     await expect(order_no).toBeTruthy()
+    test ('Test create dispatch', async({page}) => {
+        console.log(order_no)
+        await expect(order_no).toBeTruthy()
         
         
 
-    // })
+    })
 
     test ('Reset cancelled dispatch to draft', async({page}) => {
 
