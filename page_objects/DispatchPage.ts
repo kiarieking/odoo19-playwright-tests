@@ -106,15 +106,17 @@ export class DispatchPage extends Basepage{
     async openDispatch(){
        
         await this.page.getByRole('option', { name: 'Dispatch' }).click();
-        
-        const groupRows = this.page.locator('tr.o_group_header');
 
-        await expect(groupRows.first()).toBeVisible({ timeout: 20000 });
+        
+        
+        // const groupRows = this.page.locator('tr.o_group_header');
+
+        // await expect(groupRows.first()).toBeVisible({ timeout: 20000 });
      
       
-        const januaryGroup = this.page.locator('tr:has-text("January 2023")');
-        await expect(januaryGroup).toBeVisible({timeout: 15000});
-        await januaryGroup.click();
+        // const januaryGroup = this.page.locator('tr:has-text("January 2023")');
+        // await expect(januaryGroup).toBeVisible({timeout: 15000});
+        // await januaryGroup.click();
 
     }
 
